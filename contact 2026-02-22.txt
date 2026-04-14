@@ -1,0 +1,54 @@
+<!-- PAGE EN: CONTACT -->
+
+<div class="oitax-page">
+  <section class="oitax-hero" style="padding-bottom:90px;">
+    <div class="oitax-container">
+      <div class="oitax-eyebrow">Contact</div>
+      <h1 class="oitax-h1">Contact</h1>
+      <p class="oitax-lead" style="max-width:64ch;">
+        oi.tax is the entry point for cross-border matters. We intake requests in Zurich,
+        classify the matter and involve Hamburg if German proceedings are affected.
+      </p>
+    </div>
+  </section>
+
+  <section class="oitax-section" style="padding-top:90px;">
+    <div class="oitax-container">
+
+      <div class="oitax-contact-grid">
+
+        <div class="oitax-card">
+          <div class="oitax-card-title">Zurich office</div>
+          <p class="oitax-body">
+            International qualification and tax adjustments.<br>
+            Transfer pricing, corresponding corrections,<br>
+            Germany–Switzerland coordination and mutual agreement procedures.
+          </p>
+          <p class="oitax-body">
+            Email: <a href="mailto:zh@steueranwaltskanzlei.com">Zurich office</a>
+          </p>
+        </div>
+
+        <div class="oitax-card">
+          <div class="oitax-card-title">Hamburg office</div>
+          <p class="oitax-body">
+            German proceedings support.<br>
+            Tax audits, objections and tax court litigation,<br>
+            procedural and enforcement topics.
+          </p>
+          <p class="oitax-body">
+            German proceedings: via Zurich intake.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="oitax-footerline">
+        <div class="oitax-footer-meta">
+          By contacting us you consent to internal routing of your information to the responsible office, to the extent required to process your request.
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>

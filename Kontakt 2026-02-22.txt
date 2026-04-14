@@ -1,0 +1,55 @@
+<!-- PAGE DE: KONTAKT -->
+
+<div class="oitax-page">
+  <section class="oitax-hero" style="padding-bottom:90px;">
+    <div class="oitax-container">
+      <div class="oitax-eyebrow">Kontakt</div>
+      <h1 class="oitax-h1">Kontakt</h1>
+      <p class="oitax-lead" style="max-width:64ch;">
+        oi.tax ist der Einstieg für grenzüberschreitende Sachverhalte. Wir nehmen Ihre Anfrage in Zürich auf,
+        klären die Einordnung und binden Hamburg ein, wenn ein deutsches Verfahren betroffen ist.
+      </p>
+    </div>
+  </section>
+
+  <section class="oitax-section" style="padding-top:90px;">
+    <div class="oitax-container">
+
+      <div class="oitax-contact-grid">
+
+        <div class="oitax-card">
+          <div class="oitax-card-title">Office Zürich</div>
+          <p class="oitax-body">
+            Internationale Qualifikation und Steuerkorrektur.<br>
+            Verrechnungspreise, Gegenberichtigungen,<br>
+            steuerliche Verständigungsverfahren Deutschland–Schweiz.
+          </p>
+          <p class="oitax-body">
+            E-Mail an: <a href="mailto:zh@steueranwaltskanzlei.com">Büro Zürich</a>
+          </p>
+        </div>
+
+        <div class="oitax-card">
+          <div class="oitax-card-title">Office Hamburg</div>
+          <p class="oitax-body">
+            Verfahrensarbeit in Deutschland.<br>
+            Betriebsprüfungen, Einspruchs- und Klageverfahren,<br>
+            steuerliche Rechtsmittel- und Durchsetzungsfragen.
+          </p>
+          <p class="oitax-body">
+            Deutsches Verfahren: Einbindung über Zürich.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="oitax-footerline">
+        <div class="oitax-footer-meta">
+          Mit Ihrer Kontaktaufnahme erklären Sie sich damit einverstanden, dass wir Ihre Angaben intern an den zuständigen Standort weitergeben,
+          soweit dies zur Bearbeitung Ihrer Anfrage erforderlich ist.
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>

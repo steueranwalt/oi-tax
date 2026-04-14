@@ -1,0 +1,126 @@
+<!-- PAGE EN: DISPUTE RESOLUTION GERMANY–SWITZERLAND -->
+
+<div class="oitax-page">
+  <section class="oitax-hero" style="padding-bottom:90px;">
+    <div class="oitax-container">
+      <div class="oitax-eyebrow">Service</div>
+      <h1 class="oitax-h1">Dispute Resolution<br>Germany &amp; Switzerland</h1>
+      <p class="oitax-lead" style="max-width:70ch;">
+        Between Germany and Switzerland, dispute resolution is primarily built on
+        domestic procedural remedies in each state and the mutual agreement procedure under the Germany–Switzerland tax treaty.
+        The decisive factor is not the label of the procedure, but a coordinated strategy across both systems.
+      </p>
+
+      <div class="wp-block-buttons" style="margin-top:28px;">
+        <div class="wp-block-button">
+          <a class="wp-block-button__link" href="/en/#contact">Contact</a>
+        </div>
+        <div class="wp-block-button">
+          <a class="wp-block-button__link oitax-btn-secondary" href="/en/#fit">Is my case a fit?</a>
+        </div>
+      </div>
+
+      <p class="oitax-micro">
+        Focus: cross-border audits, disputes and tax adjustments with Germany–Switzerland impact.
+        No general tax advisory.
+      </p>
+    </div>
+  </section>
+
+  <section class="oitax-section" style="padding-top:90px;">
+    <div class="oitax-container">
+
+      <div class="oitax-two-col">
+        <div>
+          <h2 class="oitax-h2">The core: domestic procedure plus treaty procedure</h2>
+
+          <p class="oitax-body" style="max-width:78ch;">
+            In practice, a dispute is rarely resolved by one step alone.
+            The outcome depends on how domestic remedies and treaty-based steps are sequenced, aligned and documented.
+            If each country is handled in isolation, the case often hardens into double taxation.
+          </p>
+
+          <div class="oitax-strongline" style="margin-top:34px;">
+            Two systems. One coherent cross-border line.
+          </div>
+
+          <p class="oitax-body" style="margin-top:18px; max-width:78ch;">
+            The earlier the cross-border strategy is set, the more options remain open.
+            What matters is that facts, legal characterisation and procedural steps do not contradict across Germany and Switzerland.
+          </p>
+        </div>
+
+        <div>
+          <div class="oitax-panel">
+            <div class="oitax-card-title">Main building blocks</div>
+            <ul class="oitax-list">
+              <li><strong>Domestic remedies and corrections</strong> in each state (Germany and Switzerland)</li>
+              <li><strong>Mutual agreement procedure</strong> under the Germany–Switzerland tax treaty</li>
+              <li><strong>Coordinated fact development</strong> and document strategy across borders</li>
+              <li><strong>One argument line</strong> that remains defensible in both jurisdictions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="oitax-cards-grid" style="margin-top:28px;">
+        <div class="oitax-card">
+          <div class="oitax-card-title">What must be decided</div>
+          <ul class="oitax-list">
+            <li>Which domestic steps are triggered where, and which in parallel?</li>
+            <li>Which facts and documents must be secured early to keep options open?</li>
+            <li>Can double taxation be avoided without a mutual agreement procedure, or is it necessary?</li>
+            <li>Which line must not contradict across Germany and Switzerland?</li>
+          </ul>
+        </div>
+
+        <div class="oitax-card">
+          <div class="oitax-card-title">Typical use cases</div>
+          <ul class="oitax-list">
+            <li>Transfer pricing adjustments with cross-border impact</li>
+            <li>Permanent establishment qualification and profit allocation disputes</li>
+            <li>Conflicting legal characterisations and allocation results</li>
+            <li>Authority-initiated adjustments requiring corresponding correction abroad</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="oitax-two-col" style="margin-top:24px;">
+        <div>
+          <h2 class="oitax-h2">Why coordination matters</h2>
+          <p class="oitax-body" style="max-width:78ch;">
+            A treaty procedure does not replace domestic procedure. It interacts with it.
+            Domestic timing, the record of facts and the consistency of the argument line determine whether
+            double taxation can be prevented, reduced or eliminated.
+          </p>
+
+          <p class="oitax-body" style="max-width:78ch; margin-top:18px;">
+            The practical challenge is to avoid procedural dead-ends: steps that look right domestically,
+            but block corresponding correction or make the cross-border position inconsistent.
+          </p>
+        </div>
+
+        <div>
+          <div class="oitax-panel">
+            <div class="oitax-card-title">Our role</div>
+            <p class="oitax-body">
+              We run Germany–Switzerland disputes as one coordinated procedural strategy:
+              domestic remedies and corrections in both states, aligned with treaty dispute resolution,
+              under one coherent cross-border line.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="wp-block-buttons" style="margin-top:32px;">
+        <div class="wp-block-button">
+          <a class="wp-block-button__link" href="/en/#contact">Contact</a>
+        </div>
+        <div class="wp-block-button">
+          <a class="wp-block-button__link oitax-btn-secondary" href="/en/#fit">Is my case a fit?</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>

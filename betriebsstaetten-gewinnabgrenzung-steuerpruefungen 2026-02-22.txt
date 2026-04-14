@@ -1,0 +1,97 @@
+<!-- PAGE DE: BETRIEBSSTAETTEN & GEWINNABGRENZUNG IN STEUERPRUEFUNGEN -->
+
+<div class="oitax-page">
+  <section class="oitax-hero" style="padding-bottom:90px;">
+    <div class="oitax-container">
+      <div class="oitax-eyebrow">Leistung</div>
+      <h1 class="oitax-h1">Betriebsstätten &amp; Gewinnabgrenzung in Steuerprüfungen</h1>
+      <p class="oitax-lead" style="max-width:62ch;">
+        In Aussenprüfungen geraten Betriebsstätten regelmässig in den Fokus, sobald grenzüberschreitende Tätigkeiten bestehen.
+        Entscheidend ist selten nur, ob eine Betriebsstätte vorliegt. Entscheidend ist die Gewinnabgrenzung.
+      </p>
+
+      <div class="wp-block-buttons" style="margin-top:28px;">
+        <div class="wp-block-button">
+          <a class="wp-block-button__link" href="/de/#kontakt">Kontakt</a>
+        </div>
+        <div class="wp-block-button">
+          <a class="wp-block-button__link oitax-btn-secondary" href="/de/#wann">Passt mein Fall?</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="oitax-section" style="padding-top:90px;">
+    <div class="oitax-container">
+
+      <div class="oitax-two-col">
+        <div>
+          <h2 class="oitax-h2">Typische Konstellationen</h2>
+          <ul class="oitax-list" style="margin-top:18px;">
+            <li>Faktische Geschäftsleitung im Inland oder im Ausland?</li>
+            <li>Personelle Präsenz und Substanz im anderen Staat ausreichend?</li>
+            <li>Projekt- oder Dienstleistungstätigkeiten über Grenzen: wem zuzuordnen?</li>
+            <li>Zuordnung von Wirtschaftsgütern oder Beteiligungen zur Betriebsstätte</li>
+            <li>Funktionsveränderungen ohne klare Gewinnabgrenzung</li>
+          </ul>
+
+          <p class="oitax-body" style="margin-top:18px; max-width:78ch;">
+            Die Gewinnabgrenzung erfolgt nicht abstrakt, sondern auf Basis der tatsächlichen Verhältnisse, so wie sie nachweisbar sind.
+            Unklare Dokumentation, widersprüchliche Darstellung oder fehlende Substanz führen rasch zu Schätzungen und Korrekturen.
+          </p>
+        </div>
+
+        <div>
+          <div class="oitax-panel">
+            <div class="oitax-card-title">Kernfragen der Gewinnabgrenzung</div>
+            <ul class="oitax-list">
+              <li>Welche Funktionen werden wo tatsächlich ausgeübt?</li>
+              <li>Wo werden wesentliche unternehmerische Entscheidungen getroffen?</li>
+              <li>Welche Risiken werden wirtschaftlich getragen?</li>
+              <li>Welche Wirtschaftsgüter oder Beteiligungen sind welcher Einheit zuzuordnen?</li>
+              <li>Welche Linie ist international konsistent vertretbar?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="oitax-strongline" style="margin-top:44px;">
+        Betriebsstättenfälle sind international, sobald eine nationale Korrektur nicht korrespondierend anerkannt wird.
+      </div>
+
+      <p class="oitax-body" style="margin-top:18px; max-width:78ch;">
+        Auch hier greifen verfahrensrechtliche Instrumente: erhöhte Mitwirkung bei Auslandssachverhalten, Dokumentationsanforderungen,
+        Schätzungsbefugnisse sowie Korrekturen über Qualifikationen und Zurechnungen.
+        Eine nationale Gewinnkorrektur wirkt unmittelbar international. Wird sie im anderen Staat nicht korrespondierend mitgetragen,
+        entsteht Doppelbesteuerung.
+      </p>
+
+      <div class="oitax-cards-grid" style="margin-top:28px;">
+        <div class="oitax-card">
+          <div class="oitax-card-title">Zu klären ist insbesondere</div>
+          <ul class="oitax-list">
+            <li>Wird die Qualifikation als Betriebsstätte im anderen Staat geteilt?</li>
+            <li>Ist die Gewinnabgrenzung methodisch konsistent darstellbar?</li>
+            <li>Welche Linie kann in beiden Staaten widerspruchsfrei vertreten werden?</li>
+            <li>Welche Verfahrensschritte sind wo einzuleiten, um spätere Blockaden zu vermeiden?</li>
+          </ul>
+        </div>
+
+        <div class="oitax-card">
+          <div class="oitax-card-title">Unsere Rolle</div>
+          <p class="oitax-body">
+            Verfahrensstrategie und internationale Koordination für Betriebsstätten- und Gewinnabgrenzungsfragen in der Prüfung.
+            Ziel ist eine Linie, die in Deutschland und der Schweiz belastbar bleibt und Doppelbesteuerung vermeidet oder beseitigt.
+          </p>
+        </div>
+      </div>
+
+      <div class="wp-block-buttons" style="margin-top:32px;">
+        <div class="wp-block-button">
+          <a class="wp-block-button__link" href="/de/#kontakt">Kontakt</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
