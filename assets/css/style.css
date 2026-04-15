@@ -34,9 +34,47 @@
 }
 
 .oitax-logo {
-  height: 36px;
+  height: 40px;
   width: auto;
   display: block;
+  flex-shrink: 0;
+}
+
+.oitax-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.oitax-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.oitax-header-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--oitax-offwhite);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.oitax-header-claim {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--oitax-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+@media (max-width: 600px) {
+  .oitax-logo { height: 30px; }
+  .oitax-header-name { font-size: 13px; }
+  .oitax-header-claim { display: none; }
 }
 
 .site-header nav {
