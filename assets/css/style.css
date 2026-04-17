@@ -154,6 +154,7 @@ body, .oitax-page {
 
 .oitax-lead  { font-size:24px; line-height:1.65; max-width:48ch; color:var(--oitax-offwhite); }
 .oitax-body  { font-size:20px; line-height:1.75; color:#e5e5e5; }
+.oitax-body--small { font-size:14px; line-height:1.6; opacity:0.7; margin-top:10px; }
 .oitax-micro { font-size:18px; line-height:1.6; color:var(--oitax-offwhite); font-weight:500; opacity:0.9; margin-top:14px; }
 .oitax-strongline { margin-top:60px; font-size:32px; line-height:1.25; font-weight:800; letter-spacing:-0.02em; color:var(--oitax-offwhite); max-width:28ch; }
 

@@ -2,6 +2,14 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QP9TCQ7FG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QP9TCQ7FG9');
+</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Steuerkorrekturen bei internationalen Sachverhalten — oi.tax</title>
   <meta name="description" content="Primärberichtigung, Gegenberichtigung, Verständigungsverfahren DE/CH. Koordinierte Verfahrensstrategie gegen Doppelbesteuerung.">
@@ -127,5 +135,12 @@
   </div>
 </footer>
 
+<script>
+  document.querySelectorAll('a[data-lead]').forEach(function(a) {
+    a.addEventListener('click', function() {
+      gtag('event', 'generate_lead', { method: a.dataset.lead });
+    });
+  });
+</script>
 </body>
 </html>
