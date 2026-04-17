@@ -96,9 +96,12 @@
   color: var(--oitax-accent);
 }
 
+@media (max-width: 900px) {
+  .site-header nav { gap: 14px; font-size: 13px; flex-wrap: wrap; justify-content: flex-end; }
+}
 @media (max-width: 600px) {
   .oitax-logo { height: 28px; }
-  .site-header nav { gap: 18px; }
+  .site-header nav { gap: 10px; font-size: 12px; }
 }
 
 /* =====================================================
@@ -163,6 +166,9 @@ body, .oitax-page {
    ===================================================== */
 
 .oitax-page a { color: var(--oitax-accent); }
+.oitax-page a.oitax-btn { color: inherit; }
+.oitax-page a.oitax-btn-primary { color: #ffffff; }
+.oitax-page a.oitax-btn-secondary { color: #383838; }
 
 .oitax-page a:not(.wp-block-button__link):not(.oitax-btn):not(.button):not(.wp-element-button):not(.gb-button):not(.gb-button-link) {
   text-decoration: underline;
