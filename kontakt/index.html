@@ -2,6 +2,14 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QP9TCQ7FG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QP9TCQ7FG9');
+</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kontakt — oi.tax</title>
   <meta name="description" content="oi.tax kontaktieren — Zürich und Hamburg. Erstkontakt für grenzüberschreitende Steuerverfahren DE/CH.">
@@ -22,6 +30,9 @@
     </a>
     <nav>
       <a href="/">Home</a>
+      <a href="/betriebsstaetten-gewinnabgrenzung-steuerpruefungen/">Betriebsstätten</a>
+      <a href="/steuerkorrekturen-internationale-sachverhalte/">Steuerkorrekturen</a>
+      <a href="/streitbeilegung-deutschland-schweiz/">Streitbeilegung</a>
       <a href="/kontakt/">Kontakt</a>
       <a href="/en/">EN</a>
     </nav>
@@ -55,7 +66,13 @@
             steuerliche Verständigungsverfahren Deutschland–Schweiz.
           </p>
           <p class="oitax-body">
-            E-Mail an: <a href="mailto:zh@steueranwaltskanzlei.com">Büro Zürich</a>
+            <a href="https://incamail.com/?vbox=12a58964-4e64-43db-92a7-61ab85a53081"
+               class="oitax-btn oitax-btn-primary"
+               target="_blank" rel="noopener"
+               data-lead="incamail">Verschlüsselte Nachricht senden</a>
+          </p>
+          <p class="oitax-body oitax-body--small">
+            Oder direkt: <a href="mailto:zh@steueranwaltskanzlei.com" data-lead="email">zh@steueranwaltskanzlei.com</a>
           </p>
         </div>
 
@@ -101,5 +118,12 @@
   </div>
 </footer>
 
+<script>
+  document.querySelectorAll('a[data-lead]').forEach(function(a) {
+    a.addEventListener('click', function() {
+      gtag('event', 'generate_lead', { method: a.dataset.lead });
+    });
+  });
+</script>
 </body>
 </html>

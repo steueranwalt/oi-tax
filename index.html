@@ -2,19 +2,19 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QP9TCQ7FG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QP9TCQ7FG9');
+</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>oi.tax — double taxation defense</title>
   <meta name="description" content="Doppelbesteuerung verhindern und beseitigen zwischen Deutschland und Schweiz.">
   <link rel="stylesheet" href="/assets/css/style.css">
-<!-- Google Events -->
-<script>
-  gtag('event', 'ads_conversion_engagement', {});
-  gtag('event', 'click', {});
-  gtag('event', 'scroll', {});
-  gtag('event', 'user_engagement', {});
-  gtag('event', 'page_view', {});
-  gtag('event', 'first_visit', {});
-</script>
+
 <meta property="og:title" content="oi.tax — double taxation defense">
 <meta property="og:description" content="Defense against cross-border double taxation involving Germany or Switzerland. Strategic procedural control across two tax systems in tax audits, adjustments and disputes.">
 <meta property="og:url" content="https://oi.tax/en/">
@@ -42,6 +42,9 @@
     </a>
     <nav>
       <a href="/">Home</a>
+      <a href="/betriebsstaetten-gewinnabgrenzung-steuerpruefungen/">Betriebsstätten</a>
+      <a href="/steuerkorrekturen-internationale-sachverhalte/">Steuerkorrekturen</a>
+      <a href="/streitbeilegung-deutschland-schweiz/">Streitbeilegung</a>
       <a href="/kontakt/">Kontakt</a>
       <a href="/en/">EN</a>
     </nav>
@@ -303,7 +306,13 @@
             steuerliche Verständigungsverfahren Deutschland–Schweiz.
           </p>
           <p class="oitax-body">
-            E-Mail an: <a href="mailto:zh@steueranwaltskanzlei.com">Büro Zürich</a>
+            <a href="https://incamail.com/?vbox=12a58964-4e64-43db-92a7-61ab85a53081"
+               class="oitax-btn oitax-btn-primary"
+               target="_blank" rel="noopener"
+               data-lead="incamail">Verschlüsselte Nachricht senden</a>
+          </p>
+          <p class="oitax-body oitax-body--small">
+            Oder direkt: <a href="mailto:zh@steueranwaltskanzlei.com" data-lead="email">zh@steueranwaltskanzlei.com</a>
           </p>
         </div>
 
@@ -337,8 +346,8 @@
         <div class="oitax-footer-brand">oi.tax</div>
         <div class="oitax-footer-meta">Hamburg &amp; Zürich</div>
         <div class="oitax-footer-links" style="margin-top:12px;">
-          <a href="/de/impressum/">Impressum</a>
-          <a href="/de/datenschutz/">Datenschutz</a>
+          <a href="/imprint/">Impressum</a>
+          <a href="/privacy/">Datenschutz</a>
         </div>
       </div>
     </div>
@@ -361,5 +370,12 @@
     </div>
   </div>
 </footer>
+<script>
+  document.querySelectorAll('a[data-lead]').forEach(function(a) {
+    a.addEventListener('click', function() {
+      gtag('event', 'generate_lead', { method: a.dataset.lead });
+    });
+  });
+</script>
 </body>
 </html>

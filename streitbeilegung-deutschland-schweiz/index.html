@@ -2,6 +2,14 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QP9TCQ7FG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QP9TCQ7FG9');
+</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Streitbeilegung Deutschland–Schweiz — oi.tax</title>
   <meta name="description" content="Verständigungsverfahren, nationale Rechtsmittel, koordinierte Streitbeilegung DE/CH. Doppelbesteuerung verhindern oder beseitigen.">
@@ -22,6 +30,9 @@
     </a>
     <nav>
       <a href="/">Home</a>
+      <a href="/betriebsstaetten-gewinnabgrenzung-steuerpruefungen/">Betriebsstätten</a>
+      <a href="/steuerkorrekturen-internationale-sachverhalte/">Steuerkorrekturen</a>
+      <a href="/streitbeilegung-deutschland-schweiz/">Streitbeilegung</a>
       <a href="/kontakt/">Kontakt</a>
       <a href="/en/">EN</a>
     </nav>
@@ -116,5 +127,12 @@
   </div>
 </footer>
 
+<script>
+  document.querySelectorAll('a[data-lead]').forEach(function(a) {
+    a.addEventListener('click', function() {
+      gtag('event', 'generate_lead', { method: a.dataset.lead });
+    });
+  });
+</script>
 </body>
 </html>

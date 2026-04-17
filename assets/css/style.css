@@ -96,9 +96,12 @@
   color: var(--oitax-accent);
 }
 
+@media (max-width: 900px) {
+  .site-header nav { gap: 14px; font-size: 13px; flex-wrap: wrap; justify-content: flex-end; }
+}
 @media (max-width: 600px) {
   .oitax-logo { height: 28px; }
-  .site-header nav { gap: 18px; }
+  .site-header nav { gap: 10px; font-size: 12px; }
 }
 
 /* =====================================================
@@ -154,6 +157,7 @@ body, .oitax-page {
 
 .oitax-lead  { font-size:24px; line-height:1.65; max-width:48ch; color:var(--oitax-offwhite); }
 .oitax-body  { font-size:20px; line-height:1.75; color:#e5e5e5; }
+.oitax-body--small { font-size:14px; line-height:1.6; opacity:0.7; margin-top:10px; }
 .oitax-micro { font-size:18px; line-height:1.6; color:var(--oitax-offwhite); font-weight:500; opacity:0.9; margin-top:14px; }
 .oitax-strongline { margin-top:60px; font-size:32px; line-height:1.25; font-weight:800; letter-spacing:-0.02em; color:var(--oitax-offwhite); max-width:28ch; }
 
@@ -162,6 +166,9 @@ body, .oitax-page {
    ===================================================== */
 
 .oitax-page a { color: var(--oitax-accent); }
+.oitax-page a.oitax-btn { color: inherit; }
+.oitax-page a.oitax-btn-primary { color: #ffffff; }
+.oitax-page a.oitax-btn-secondary { color: #383838; }
 
 .oitax-page a:not(.wp-block-button__link):not(.oitax-btn):not(.button):not(.wp-element-button):not(.gb-button):not(.gb-button-link) {
   text-decoration: underline;

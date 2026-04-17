@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QP9TCQ7FG9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QP9TCQ7FG9');
+</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Double Taxation Defense Germany &amp; Switzerland — oi.tax</title>
   <meta name="description" content="Defense against cross-border double taxation involving Germany or Switzerland. Transfer pricing, permanent establishments, mutual agreement procedures.">
@@ -24,6 +32,10 @@
     </a>
     <nav>
       <a href="/en/">Home</a>
+      <a href="/en/transfer-pricing-tax-audits/">Transfer Pricing</a>
+      <a href="/en/cross-border-tax-adjustments/">Tax Adjustments</a>
+      <a href="/en/dispute-resolution-germany-switzerland/">Dispute Resolution</a>
+      <a href="/en/permanent-establishments-profit-allocation-tax-audits/">Perm. Establishments</a>
       <a href="/en/contact/">Contact</a>
       <a href="/">DE</a>
     </nav>
@@ -274,7 +286,13 @@
             Germany–Switzerland coordination and mutual agreement procedures.
           </p>
           <p class="oitax-body">
-            Email: <a href="mailto:zh@steueranwaltskanzlei.com">Zurich office</a>
+            <a href="https://incamail.com/?vbox=12a58964-4e64-43db-92a7-61ab85a53081"
+               class="oitax-btn oitax-btn-primary"
+               target="_blank" rel="noopener"
+               data-lead="incamail">Send encrypted message</a>
+          </p>
+          <p class="oitax-body oitax-body--small">
+            Or directly: <a href="mailto:zh@steueranwaltskanzlei.com" data-lead="email">zh@steueranwaltskanzlei.com</a>
           </p>
         </div>
 
@@ -317,5 +335,12 @@
   </div>
 </footer>
 
+<script>
+  document.querySelectorAll('a[data-lead]').forEach(function(a) {
+    a.addEventListener('click', function() {
+      gtag('event', 'generate_lead', { method: a.dataset.lead });
+    });
+  });
+</script>
 </body>
 </html>
