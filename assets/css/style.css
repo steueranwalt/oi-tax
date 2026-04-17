@@ -368,6 +368,19 @@ body, .oitax-page {
 }
 
 .oitax-footerline { margin-top:80px; padding-top:24px; border-top:1px solid var(--oitax-border); }
+
+/* CTA Card */
+.oitax-cta-card {
+  margin-top: 40px;
+}
+.oitax-cta-card .oitax-body--small {
+  color: var(--oitax-offwhite);
+  margin-top: 16px;
+}
+.oitax-card:hover .oitax-cta-card .oitax-body--small,
+.oitax-cta-card:hover .oitax-body--small {
+  color: var(--oitax-text-dark);
+}
 .oitax-footer-brand { font-weight:800; color:var(--oitax-offwhite); }
 .oitax-footer-meta { font-size:14px; color:var(--oitax-muted); }
 .oitax-footer-links a { color:var(--oitax-offwhite); text-decoration:none; margin-right:18px; }
