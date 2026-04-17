@@ -23,9 +23,9 @@ SCOPE = "https://www.googleapis.com/auth/analytics.readonly"
 
 DIMENSIONS = [
     {"name": "sessionGoogleAdsCampaignName"},
-    {"name": "sessionGoogleAdsMedium"},
+    {"name": "sessionGoogleAdsCampaignType"},
     {"name": "sessionDefaultChannelGroup"},
-    {"name": "month"},
+    {"name": "yearMonth"},
 ]
 
 METRICS = [
@@ -89,9 +89,21 @@ def run_report(token: str, start: str, end: str) -> dict:
         "orderBys": [{"metric": {"metricName": "sessions"}, "desc": True}],
         "limit": 1000,
     }
-    resp = requests.post(API_URL, headers=headers, json=payload, timeout=30)
-    resp.raise_for_status()
-    return resp.json()
+    for attempt in range(5):
+        try:
+            resp = requests.post(API_URL, headers=headers, json=payload, timeout=30)
+            if resp.status_code == 503:
+                wait = 2 ** attempt
+                print(f"503 (attempt {attempt+1}/5), retrying in {wait}s...", flush=True)
+                time.sleep(wait)
+                continue
+            resp.raise_for_status()
+            return resp.json()
+        except requests.exceptions.ConnectionError:
+            wait = 2 ** attempt
+            print(f"Connection error (attempt {attempt+1}/5), retrying in {wait}s...", flush=True)
+            time.sleep(wait)
+    raise RuntimeError("API nicht erreichbar nach 5 Versuchen")
 
 
 def format_report(data: dict) -> None:
