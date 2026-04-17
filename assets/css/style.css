@@ -96,82 +96,12 @@
   color: var(--oitax-accent);
 }
 
-/* Dropdown (details/summary) */
-details.oitax-nav-dropdown {
-  position: relative;
-}
-
-details.oitax-nav-dropdown summary {
-  list-style: none;
-  color: var(--oitax-light);
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: color 180ms ease;
-  white-space: nowrap;
-}
-
-details.oitax-nav-dropdown summary::-webkit-details-marker { display: none; }
-details.oitax-nav-dropdown summary::marker { display: none; }
-
-details.oitax-nav-dropdown[open] summary,
-details.oitax-nav-dropdown summary:hover {
-  color: var(--oitax-accent);
-}
-
-.oitax-nav-caret {
-  font-size: 11px;
-  transition: transform 200ms ease;
-  display: inline-block;
-}
-
-details.oitax-nav-dropdown[open] .oitax-nav-caret {
-  transform: rotate(180deg);
-}
-
-.oitax-nav-dropdown-menu {
-  position: absolute;
-  top: calc(100% + 14px);
-  right: 0;
-  background: #1c1c1c;
-  border: 1px solid var(--oitax-border);
-  border-radius: 10px;
-  min-width: 260px;
-  padding: 8px 0;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.45);
-  z-index: 300;
-}
-
-.oitax-nav-dropdown-menu a {
-  display: block;
-  padding: 11px 20px;
-  color: var(--oitax-light) !important;
-  text-decoration: none !important;
-  font-size: 14px;
-  font-weight: 500;
-  white-space: nowrap;
-  transition: background 120ms ease, color 120ms ease;
-}
-
-.oitax-nav-dropdown-menu a:hover {
-  background: rgba(255,53,0,0.09);
-  color: var(--oitax-accent) !important;
-}
-
 @media (max-width: 900px) {
   .site-header nav { gap: 14px; font-size: 13px; flex-wrap: wrap; justify-content: flex-end; }
-  details.oitax-nav-dropdown summary { font-size: 13px; }
 }
 @media (max-width: 600px) {
   .oitax-logo { height: 28px; }
   .site-header nav { gap: 10px; font-size: 12px; }
-  details.oitax-nav-dropdown summary { font-size: 12px; }
-  .oitax-nav-dropdown-menu { right: -20px; min-width: 220px; }
 }
 
 /* =====================================================
@@ -441,28 +371,15 @@ body, .oitax-page {
 
 /* CTA Card */
 .oitax-cta-card {
-  margin-top: 72px;
-  padding: 48px 40px;
-  border: 1px solid var(--oitax-border);
-  border-left: 4px solid var(--oitax-accent);
-  border-radius: 12px;
-  text-align: center;
+  margin-top: 40px;
 }
-.oitax-cta-hint {
-  margin-top: 18px;
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--oitax-muted);
+.oitax-cta-card .oitax-body--small {
+  color: var(--oitax-offwhite);
+  margin-top: 16px;
 }
-.oitax-cta-legal {
-  margin-top: 20px;
-  font-size: 13px;
-  line-height: 1.65;
-  color: var(--oitax-muted);
-  opacity: 0.7;
-  max-width: 56ch;
-  margin-left: auto;
-  margin-right: auto;
+.oitax-card:hover .oitax-cta-card .oitax-body--small,
+.oitax-cta-card:hover .oitax-body--small {
+  color: var(--oitax-text-dark);
 }
 .oitax-footer-brand { font-weight:800; color:var(--oitax-offwhite); }
 .oitax-footer-meta { font-size:14px; color:var(--oitax-muted); }
