@@ -425,14 +425,22 @@ body, .oitax-page {
 /* CTA Card */
 .oitax-cta-card {
   margin-top: 40px;
+  background: #ff3500 !important;
+  border-radius: var(--oitax-radius);
+  padding: 34px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+  border: 1px solid rgba(56,56,56,0.18);
 }
-.oitax-cta-card .oitax-body--small {
-  color: var(--oitax-offwhite);
-  margin-top: 16px;
+.oitax-cta-card .oitax-body {
+  color: #ffffff !important;
 }
-.oitax-card:hover .oitax-cta-card .oitax-body--small,
-.oitax-cta-card:hover .oitax-body--small {
-  color: var(--oitax-text-dark);
+.oitax-cta-card:hover {
+  background: var(--oitax-offwhite) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 28px 70px rgba(0,0,0,0.22);
+}
+.oitax-cta-card:hover .oitax-body {
+  color: var(--oitax-text-dark) !important;
 }
 .oitax-footer-brand { font-weight:800; color:var(--oitax-offwhite); }
 .oitax-footer-meta { font-size:14px; color:var(--oitax-muted); }
