@@ -30,15 +30,15 @@
     </a>
     <nav>
       <a href="/en/">Home</a>
-  <details class="oitax-nav-dropdown">
-      <summary>Topics <span class="oitax-nav-caret">▾</span></summary>
+  <div class="oitax-nav-dropdown">
+      <button class="oitax-nav-dropdown-toggle" type="button">Topics <span class="oitax-nav-caret">▾</span></button>
       <div class="oitax-nav-dropdown-menu">
         <a href="/en/transfer-pricing-tax-audits/">Transfer Pricing in Tax Audits</a>
         <a href="/en/cross-border-tax-adjustments/">Cross-Border Tax Adjustments</a>
         <a href="/en/dispute-resolution-germany-switzerland/">Dispute Resolution Germany–Switzerland</a>
         <a href="/en/permanent-establishments-profit-allocation-tax-audits/">Permanent Establishments &amp; Profit Allocation</a>
       </div>
-</details>
+  </div>
       <a href="/en/contact/">Contact</a>
       <a href="/streitbeilegung-deutschland-schweiz/">DE</a>
     </nav>
@@ -184,6 +184,19 @@
   document.querySelectorAll('a[data-lead]').forEach(function(a) {
     a.addEventListener('click', function() {
       gtag('event', 'generate_lead', { method: a.dataset.lead });
+    });
+  });
+</script>
+<script>
+  document.querySelectorAll('.oitax-nav-dropdown').forEach(function(dd) {
+    dd.querySelector('.oitax-nav-dropdown-toggle').addEventListener('click', function(e) {
+      e.stopPropagation();
+      dd.classList.toggle('open');
+    });
+  });
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.oitax-nav-dropdown.open').forEach(function(d) {
+      d.classList.remove('open');
     });
   });
 </script>

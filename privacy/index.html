@@ -31,14 +31,14 @@
     </a>
     <nav>
       <a href="/">Home</a>
-  <details class="oitax-nav-dropdown">
-      <summary>Themen <span class="oitax-nav-caret">▾</span></summary>
+  <div class="oitax-nav-dropdown">
+      <button class="oitax-nav-dropdown-toggle" type="button">Themen <span class="oitax-nav-caret">▾</span></button>
       <div class="oitax-nav-dropdown-menu">
         <a href="/betriebsstaetten-gewinnabgrenzung-steuerpruefungen/">Betriebsstätten &amp; Gewinnabgrenzung</a>
         <a href="/steuerkorrekturen-internationale-sachverhalte/">Steuerkorrekturen</a>
         <a href="/streitbeilegung-deutschland-schweiz/">Streitbeilegung Deutschland–Schweiz</a>
       </div>
-</details>
+  </div>
       <a href="/kontakt/">Kontakt</a>
       <a href="/privacy/">EN</a>
     </nav>
@@ -117,6 +117,19 @@
   document.querySelectorAll('a[data-lead]').forEach(function(a) {
     a.addEventListener('click', function() {
       gtag('event', 'generate_lead', { method: a.dataset.lead });
+    });
+  });
+</script>
+<script>
+  document.querySelectorAll('.oitax-nav-dropdown').forEach(function(dd) {
+    dd.querySelector('.oitax-nav-dropdown-toggle').addEventListener('click', function(e) {
+      e.stopPropagation();
+      dd.classList.toggle('open');
+    });
+  });
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.oitax-nav-dropdown.open').forEach(function(d) {
+      d.classList.remove('open');
     });
   });
 </script>
