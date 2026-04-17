@@ -438,6 +438,32 @@ body, .oitax-page {
 }
 
 .oitax-footerline { margin-top:80px; padding-top:24px; border-top:1px solid var(--oitax-border); }
+
+/* CTA Card */
+.oitax-cta-card {
+  margin-top: 72px;
+  padding: 48px 40px;
+  border: 1px solid var(--oitax-border);
+  border-left: 4px solid var(--oitax-accent);
+  border-radius: 12px;
+  text-align: center;
+}
+.oitax-cta-hint {
+  margin-top: 18px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--oitax-muted);
+}
+.oitax-cta-legal {
+  margin-top: 20px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--oitax-muted);
+  opacity: 0.7;
+  max-width: 56ch;
+  margin-left: auto;
+  margin-right: auto;
+}
 .oitax-footer-brand { font-weight:800; color:var(--oitax-offwhite); }
 .oitax-footer-meta { font-size:14px; color:var(--oitax-muted); }
 .oitax-footer-links a { color:var(--oitax-offwhite); text-decoration:none; margin-right:18px; }
