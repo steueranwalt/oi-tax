@@ -3,79 +3,114 @@ GA4 Google Ads Campaign Report for oi.tax
 Property ID: 273918863
 
 Requirements:
-    pip install google-analytics-data google-auth
+    pip install requests rsa
 
 Usage:
     python ga4_ads_report.py --key service_account.json
 """
 
 import argparse
+import base64
 import json
-from google.analytics.data_v1beta import BetaAnalyticsDataClient
-from google.analytics.data_v1beta.types import (
-    DateRange,
-    Dimension,
-    Metric,
-    RunReportRequest,
-    OrderBy,
-)
-from google.oauth2 import service_account
+import time
+import requests
+import rsa
 
 PROPERTY_ID = "273918863"
+API_URL = f"https://analyticsdata.googleapis.com/v1beta/properties/{PROPERTY_ID}:runReport"
+TOKEN_URL = "https://oauth2.googleapis.com/token"
+SCOPE = "https://www.googleapis.com/auth/analytics.readonly"
 
 DIMENSIONS = [
-    "sessionGoogleAdsCampaignName",
-    "sessionGoogleAdsMedium",
-    "sessionDefaultChannelGroup",
-    "month",
+    {"name": "sessionGoogleAdsCampaignName"},
+    {"name": "sessionGoogleAdsMedium"},
+    {"name": "sessionDefaultChannelGroup"},
+    {"name": "month"},
 ]
 
 METRICS = [
-    "sessions",
-    "totalUsers",
-    "newUsers",
-    "bounceRate",
-    "averageSessionDuration",
-    "conversions",
-    "totalRevenue",
+    {"name": "sessions"},
+    {"name": "totalUsers"},
+    {"name": "newUsers"},
+    {"name": "bounceRate"},
+    {"name": "averageSessionDuration"},
+    {"name": "conversions"},
+    {"name": "totalRevenue"},
 ]
 
 
-def build_client(key_path: str) -> BetaAnalyticsDataClient:
-    creds = service_account.Credentials.from_service_account_file(
-        key_path,
-        scopes=["https://www.googleapis.com/auth/analytics.readonly"],
-    )
-    return BetaAnalyticsDataClient(credentials=creds)
+def _b64url(data: bytes) -> str:
+    return base64.urlsafe_b64encode(data).rstrip(b"=").decode()
 
 
-def run_report(client: BetaAnalyticsDataClient, start: str, end: str) -> dict:
-    request = RunReportRequest(
-        property=f"properties/{PROPERTY_ID}",
-        dimensions=[Dimension(name=d) for d in DIMENSIONS],
-        metrics=[Metric(name=m) for m in METRICS],
-        date_ranges=[DateRange(start_date=start, end_date=end)],
-        order_bys=[
-            OrderBy(
-                metric=OrderBy.MetricOrderBy(metric_name="sessions"),
-                desc=True,
-            )
-        ],
-    )
-    return client.run_report(request)
+def _make_jwt(client_email: str, private_key_pem: str) -> str:
+    now = int(time.time())
+    header = _b64url(json.dumps({"alg": "RS256", "typ": "JWT"}).encode())
+    payload = _b64url(json.dumps({
+        "iss": client_email,
+        "scope": SCOPE,
+        "aud": TOKEN_URL,
+        "iat": now,
+        "exp": now + 3600,
+    }).encode())
+    signing_input = f"{header}.{payload}".encode()
+    # Service account keys are PKCS#8; convert to PKCS#1 DER then load
+    import re, base64 as _b64
+    pem_body = re.sub(r"-----[^-]+-----|\s", "", private_key_pem)
+    der = _b64.b64decode(pem_body)
+    # Strip PKCS#8 wrapper (30 82 ... 30 0d ... 04 82 ...) to get PKCS#1
+    # Find the inner OCTET STRING containing the RSAPrivateKey
+    idx = der.index(b"\x04\x82")
+    inner_len = (der[idx + 2] << 8) | der[idx + 3]
+    pkcs1_der = der[idx + 4: idx + 4 + inner_len]
+    key = rsa.PrivateKey._load_pkcs1_der(pkcs1_der)
+    sig = rsa.sign(signing_input, key, "SHA-256")
+    return f"{header}.{payload}.{_b64url(sig)}"
 
 
-def format_report(response) -> None:
-    headers = [d.name for d in response.dimension_headers] + [
-        m.name for m in response.metric_headers
-    ]
-    print("\t".join(headers))
-    print("-" * 120)
-    for row in response.rows:
-        dims = [v.value for v in row.dimension_values]
-        mets = [v.value for v in row.metric_values]
-        print("\t".join(dims + mets))
-    print(f"\nTotal rows: {response.row_count}")
+def get_access_token(key_path: str) -> str:
+    with open(key_path) as f:
+        creds = json.load(f)
+    jwt_token = _make_jwt(creds["client_email"], creds["private_key"])
+    resp = requests.post(TOKEN_URL, data={
+        "grant_type": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "assertion": jwt_token,
+    }, timeout=15)
+    resp.raise_for_status()
+    return resp.json()["access_token"]
+
+
+def run_report(token: str, start: str, end: str) -> dict:
+    headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+    payload = {
+        "dimensions": DIMENSIONS,
+        "metrics": METRICS,
+        "dateRanges": [{"startDate": start, "endDate": end}],
+        "orderBys": [{"metric": {"metricName": "sessions"}, "desc": True}],
+        "limit": 1000,
+    }
+    resp = requests.post(API_URL, headers=headers, json=payload, timeout=30)
+    resp.raise_for_status()
+    return resp.json()
+
+
+def format_report(data: dict) -> None:
+    dim_headers = [h["name"] for h in data.get("dimensionHeaders", [])]
+    met_headers = [h["name"] for h in data.get("metricHeaders", [])]
+    headers = dim_headers + met_headers
+    col_widths = [max(len(h), 12) for h in headers]
+
+    header_line = "  ".join(h.ljust(w) for h, w in zip(headers, col_widths))
+    print(header_line)
+    print("-" * len(header_line))
+
+    for row in data.get("rows", []):
+        dims = [v["value"] for v in row.get("dimensionValues", [])]
+        mets = [v["value"] for v in row.get("metricValues", [])]
+        values = dims + mets
+        print("  ".join(str(v).ljust(w) for v, w in zip(values, col_widths)))
+
+    print(f"\nTotal rows: {data.get('rowCount', 0)}")
 
 
 def main():
@@ -86,21 +121,23 @@ def main():
     parser.add_argument("--json", action="store_true", help="Output as JSON")
     args = parser.parse_args()
 
-    client = build_client(args.key)
-    response = run_report(client, args.start, args.end)
+    token = get_access_token(args.key)
+    data = run_report(token, args.start, args.end)
 
     if args.json:
         rows = []
-        for row in response.rows:
+        dim_headers = [h["name"] for h in data.get("dimensionHeaders", [])]
+        met_headers = [h["name"] for h in data.get("metricHeaders", [])]
+        for row in data.get("rows", []):
             record = {}
-            for i, d in enumerate(response.dimension_headers):
-                record[d.name] = row.dimension_values[i].value
-            for i, m in enumerate(response.metric_headers):
-                record[m.name] = row.metric_values[i].value
+            for i, h in enumerate(dim_headers):
+                record[h] = row["dimensionValues"][i]["value"]
+            for i, h in enumerate(met_headers):
+                record[h] = row["metricValues"][i]["value"]
             rows.append(record)
         print(json.dumps(rows, indent=2, ensure_ascii=False))
     else:
-        format_report(response)
+        format_report(data)
 
 
 if __name__ == "__main__":
