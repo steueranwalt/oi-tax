@@ -2,13 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QP9TCQ7FG9"></script>
+<!-- Google tag (gtag.js) with Consent Mode v2 -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QP9TCQ7FG9"></script>
+<script>
   gtag('js', new Date());
   gtag('config', 'G-QP9TCQ7FG9');
+  if (localStorage.getItem('oi_consent') === 'granted') {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+  }
 </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dispute Resolution Germany &amp; Switzerland — oi.tax</title>
@@ -187,6 +199,18 @@
       gtag('event', 'generate_lead', { method: a.dataset.lead });
     });
   });
+  function oiGrantConsent() {
+    localStorage.setItem('oi_consent', 'granted');
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+    document.getElementById('oi-consent').style.display = 'none';
+  }
+  function oiDenyConsent() {
+    localStorage.setItem('oi_consent', 'denied');
+    document.getElementById('oi-consent').style.display = 'none';
+  }
+  if (!localStorage.getItem('oi_consent')) {
+    document.getElementById('oi-consent').style.display = 'flex';
+  }
 </script>
 <script>
   document.querySelectorAll('.oitax-nav-dropdown').forEach(function(dd) {
@@ -201,5 +225,12 @@
     });
   });
 </script>
+<div id="oi-consent" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#2a2a2a;border-top:1px solid #4a4a4a;padding:1rem 1.5rem;align-items:center;justify-content:space-between;gap:1rem;z-index:9999;flex-wrap:wrap;">
+  <p style="margin:0;color:#f2f2f2;font-size:0.875rem;">This site uses Google Analytics to understand usage anonymously. <a href="/privacy/" style="color:#ff3500;">Privacy policy</a></p>
+  <div style="display:flex;gap:0.75rem;flex-shrink:0;">
+    <button onclick="oiDenyConsent()" style="background:transparent;border:1px solid #7a7a7a;color:#f2f2f2;padding:0.5rem 1rem;cursor:pointer;font-size:0.875rem;border-radius:4px;">Decline</button>
+    <button onclick="oiGrantConsent()" style="background:#ff3500;border:none;color:#fff;padding:0.5rem 1rem;cursor:pointer;font-size:0.875rem;border-radius:4px;font-weight:600;">Accept</button>
+  </div>
+</div>
 </body>
 </html>
