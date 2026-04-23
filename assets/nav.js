@@ -11,16 +11,27 @@
   }
 
   var btn = document.createElement('button');
-  btn.setAttribute('aria-label', 'Nach oben');
+  btn.setAttribute('aria-label', 'Zum vorherigen Abschnitt');
   btn.className = 'oitax-scroll-top';
   btn.innerHTML = '↑';
   document.body.appendChild(btn);
 
-  window.addEventListener('scroll', function () {
-    btn.classList.toggle('oitax-scroll-top--visible', window.scrollY > 400);
-  }, { passive: true });
+  var sections = Array.from(document.querySelectorAll('.oitax-hero, .oitax-section'));
+
+  function update() {
+    btn.classList.toggle('oitax-scroll-top--visible', window.scrollY > 200);
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 
   btn.addEventListener('click', function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var current = window.scrollY;
+    // find the section whose top is above current scroll position
+    var target = null;
+    for (var i = sections.length - 1; i >= 0; i--) {
+      var top = sections[i].getBoundingClientRect().top + current;
+      if (top < current - 10) { target = top; break; }
+    }
+    window.scrollTo({ top: target !== null ? target : 0, behavior: 'smooth' });
   });
 })();
