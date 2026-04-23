@@ -22,7 +22,7 @@ a { color: var(--oitax-primary); }
 .oitax-header-text { display: flex; flex-direction: column; gap: 1px; }
 .oitax-header-name { font-size: 22px; font-weight: 700; color: #ffffff; letter-spacing: 0.01em; line-height: 1.2; }
 .oitax-header-claim { font-size: 13px; font-weight: 600; color: #d9d9d9; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.2; }
-.site-header nav { display: flex; align-items: center; gap: 28px; }
+.site-header nav { display: flex; align-items: center; gap: 28px; flex-wrap: nowrap; white-space: nowrap; }
 .site-header nav a, .oitax-nav-dropdown-toggle { color: #f2f2f2; text-decoration: none; font-size: 15px; font-weight: 600; letter-spacing: 0.02em; transition: color 180ms ease; background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; }
 .site-header nav a:hover, .oitax-nav-dropdown-toggle:hover { color: var(--oitax-primary); }
 .oitax-nav-dropdown { position: relative; display: flex; align-items: center; }
