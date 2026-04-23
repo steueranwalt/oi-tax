@@ -116,6 +116,11 @@ a { color: var(--oitax-primary); }
   .oitax-footer-offices { grid-template-columns: 1fr; gap: 20px; }
 }
 
+/* Scroll-to-top button */
+.oitax-scroll-top { position: fixed; bottom: 28px; right: 28px; width: 46px; height: 46px; border-radius: 50%; background: var(--oitax-primary); color: #fff; border: none; font-size: 20px; line-height: 1; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.18); opacity: 0; transform: translateY(12px); transition: opacity 220ms ease, transform 220ms ease; pointer-events: none; z-index: 500; }
+.oitax-scroll-top--visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.oitax-scroll-top:hover { background: var(--oitax-ink); }
+
 /* Legal pages */
 .oitax-legal { padding: 100px 0 120px; }
 .oitax-legal h1 { font-size: 48px; line-height:1.1; font-weight:800; letter-spacing:-0.03em; color: var(--oitax-ink); margin: 0 0 18px; }
