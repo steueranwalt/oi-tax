@@ -48,6 +48,7 @@ a { color: var(--oitax-primary); }
 .oitax-body { font-size:18px; line-height:1.7; color:#4a4a4a; margin: 0 0 14px; }
 .oitax-body:last-child { margin-bottom: 0; }
 .oitax-micro { font-size:16px; line-height:1.6; color:var(--oitax-ink); font-weight:500; opacity:0.8; margin-top:14px; }
+.oitax-leitsatz { font-size:18px; font-weight:700; color:var(--oitax-ink); margin:22px 0 0; letter-spacing:0.01em; }
 .oitax-strongline { margin-top:60px; font-size:30px; line-height:1.25; font-weight:800; letter-spacing:-0.02em; color:var(--oitax-ink); max-width:28ch; }
 .oitax-list { padding-left: 20px; margin: 0; }
 .oitax-list li { margin-bottom: 8px; line-height: 1.5; }
