@@ -8,20 +8,8 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="/assets/style.css">
 <style>
-/* ── Summit page — page-specific additions ── */
+/* Summit — minimal page-specific additions */
 
-/* Dark hero */
-.s-hero {
-  background: #1a1a1a;
-  padding: 80px 0 72px;
-  border-bottom: none;
-}
-.s-hero-inner {
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 60px;
-  align-items: start;
-}
 .s-badge {
   display: inline-flex;
   align-items: center;
@@ -31,10 +19,10 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--oitax-primary);
-  border: 1px solid rgba(255,35,10,0.45);
+  border: 1px solid rgba(255,35,10,0.4);
   border-radius: 999px;
-  padding: 6px 15px;
-  margin-bottom: 30px;
+  padding: 5px 14px;
+  margin-bottom: 22px;
 }
 .s-badge-dot {
   width: 6px;
@@ -48,408 +36,86 @@
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.25; }
 }
-.s-h1 {
-  font-size: 72px;
-  line-height: 1.0;
-  font-weight: 800;
-  letter-spacing: -0.045em;
-  color: var(--oitax-primary);
-  margin: 0 0 8px;
-}
-.s-h1-sub {
-  font-size: 38px;
-  line-height: 1.1;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: #c8c8c8;
-  margin: 0 0 30px;
-}
-.s-hero-lead {
-  font-size: 17px;
-  line-height: 1.72;
-  color: #888;
-  max-width: 54ch;
-  margin: 0 0 36px;
-}
-.s-sidebar-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--oitax-radius);
-  padding: 28px;
-  margin-top: 4px;
-}
-.s-sidebar-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--oitax-primary);
-  margin-bottom: 14px;
-}
-.s-sidebar-card p {
-  font-size: 15px;
-  line-height: 1.65;
-  color: #b0b0b0;
-  margin: 0 0 12px;
-}
-.s-sidebar-card p:last-child { margin-bottom: 0; }
 
-/* ── Five theses ── */
-.s-thesis-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
-  margin-top: 36px;
-}
-.s-thesis-card {
-  grid-column: span 2;
-  background: var(--oitax-primary);
-  border-radius: var(--oitax-radius);
-  padding: 28px;
-  box-shadow: 0 10px 36px rgba(56,56,56,0.12);
-  transition: background 220ms ease, transform 220ms ease, box-shadow 220ms ease;
-}
-.s-thesis-card:nth-child(4),
-.s-thesis-card:nth-child(5) {
-  grid-column: span 3;
-}
-.s-thesis-card:hover {
-  background: var(--oitax-surface);
-  transform: translateY(-3px);
-  box-shadow: 0 20px 56px rgba(56,56,56,0.16);
-}
-.s-thesis-num {
+/* Thesis number inside oitax-card */
+.s-num {
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.45);
-  margin-bottom: 14px;
+  margin-bottom: 10px;
   transition: color 220ms ease;
 }
-.s-thesis-card:hover .s-thesis-num { color: var(--oitax-primary); }
-.s-thesis-title {
-  font-size: 21px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  color: #ffffff;
-  margin: 0 0 12px;
-  transition: color 220ms ease;
-}
-.s-thesis-card:hover .s-thesis-title { color: var(--oitax-ink); }
-.s-thesis-body {
-  font-size: 15px;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.8);
-  margin: 0;
-  transition: color 220ms ease;
-}
-.s-thesis-card:hover .s-thesis-body { color: #4a4a4a; }
-.s-thesis-ref {
-  font-size: 12px;
-  color: rgba(255,255,255,0.38);
-  margin-top: 12px;
-  font-style: italic;
-  transition: color 220ms ease;
-}
-.s-thesis-card:hover .s-thesis-ref { color: var(--oitax-muted); }
-.s-secondary-line {
-  margin-top: 52px;
-  font-size: 26px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--oitax-ink);
-}
+.oitax-card:hover .s-num { color: var(--oitax-muted); }
 
-/* ── Three actions ── */
+/* 3+2 thesis grid */
+.s-thesis-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 22px;
+  margin-top: 28px;
+}
+.s-thesis-grid .oitax-card              { grid-column: span 2; }
+.s-thesis-grid .oitax-card:nth-child(4),
+.s-thesis-grid .oitax-card:nth-child(5) { grid-column: span 3; }
+
+/* Action points */
 .s-actions {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 36px;
   margin-top: 44px;
 }
-.s-action {
-  border-left: 3px solid var(--oitax-primary);
-  padding: 4px 0 4px 22px;
-}
-.s-action-num {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--oitax-primary);
-  margin-bottom: 11px;
-}
-.s-action-title {
-  font-size: 19px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-  color: var(--oitax-ink);
-  margin: 0 0 11px;
-}
-.s-action-body {
-  font-size: 15px;
-  line-height: 1.68;
-  color: #555;
-  margin: 0;
-}
+.s-action            { border-left: 3px solid var(--oitax-primary); padding: 4px 0 4px 22px; }
+.s-action-num        { font-size: 11px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oitax-primary); margin-bottom: 10px; }
+.s-action-title      { font-size: 19px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; color: var(--oitax-ink); margin: 0 0 10px; }
+.s-action-body       { font-size: 15px; line-height: 1.68; color: #555; margin: 0; }
 
-/* ── Speaker ── */
-.s-speaker-wrap {
-  display: flex;
-  gap: 28px;
-  align-items: flex-start;
-  max-width: 640px;
-}
-.s-speaker-avatar {
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  background: var(--oitax-primary);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: -0.03em;
-}
-.s-speaker-name {
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--oitax-ink);
-  margin: 0 0 5px;
-}
-.s-speaker-role {
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--oitax-muted);
-  margin: 0 0 8px;
-}
-.s-speaker-org {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--oitax-primary);
-  letter-spacing: 0.02em;
-}
+/* Speaker */
+.s-speaker           { display: flex; gap: 24px; align-items: flex-start; }
+.s-avatar            { width: 64px; height: 64px; border-radius: 50%; background: var(--oitax-primary); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; color: #fff; }
+.s-speaker-name      { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--oitax-ink); margin: 0 0 5px; }
+.s-speaker-role      { font-size: 15px; line-height: 1.5; color: var(--oitax-muted); margin: 0 0 7px; }
+.s-speaker-org       { font-size: 14px; font-weight: 700; color: var(--oitax-primary); }
 
-/* ── Partner proposition ── */
-.s-partner {
-  background: #1a1a1a;
-  padding: 100px 0;
-}
-.s-partner-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 60px;
-  align-items: start;
-}
-.s-partner-h2 {
-  font-size: 44px;
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1.08;
-  color: #ffffff;
-  margin: 0 0 18px;
-}
-.s-partner-sub {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #888;
-  margin: 0 0 36px;
-  max-width: 52ch;
-}
-.s-partner-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-.s-partner-list li {
-  font-size: 16px;
-  line-height: 1.55;
-  color: #b8b8b8;
-  padding-left: 20px;
-  position: relative;
-}
-.s-partner-list li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--oitax-primary);
-  font-weight: 700;
-}
-.s-referral-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--oitax-radius);
-  padding: 28px;
-}
-.s-referral-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--oitax-primary);
-  margin-bottom: 14px;
-}
-.s-referral-card p {
-  font-size: 15px;
-  line-height: 1.65;
-  color: #a8a8a8;
-  margin: 0;
-}
+/* Partner bullet list */
+.s-partner-list      { list-style: none; padding: 0; margin: 18px 0 0; }
+.s-partner-list li   { font-size: 16px; line-height: 1.6; color: #555; padding-left: 20px; position: relative; margin-bottom: 10px; }
+.s-partner-list li::before { content: '→'; position: absolute; left: 0; color: var(--oitax-primary); font-weight: 700; }
 
-/* ── CTA ── */
-.s-cta {
-  padding: 100px 0;
-  border-top: 1px solid var(--oitax-border);
-}
-.s-cta-inner {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 60px;
-  align-items: center;
-}
-.s-cta-h2 {
-  font-size: 44px;
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1.08;
-  color: var(--oitax-ink);
-  margin: 0 0 16px;
-}
-.s-cta-body {
-  font-size: 17px;
-  line-height: 1.65;
-  color: #555;
-  max-width: 46ch;
-  margin: 0 0 28px;
-}
-.s-cta-email {
-  margin-top: 14px;
-  font-size: 15px;
-  color: var(--oitax-muted);
-}
-.s-cta-email a {
-  color: var(--oitax-ink);
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 180ms ease;
-}
-.s-cta-email a:hover { color: var(--oitax-primary); }
-
-/* ── QR placeholder ── */
-.s-qr-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  text-align: center;
-}
+/* QR placeholder (white box inside card) */
 .s-qr-box {
-  width: 164px;
-  height: 164px;
-  background: #ffffff;
-  border-radius: 10px;
+  width: 144px;
+  height: 144px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 11px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14px;
-  box-shadow: 0 8px 28px rgba(56,56,56,0.10);
 }
-.s-qr-caption {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--oitax-muted);
-}
-.s-qr-url {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--oitax-ink);
-  letter-spacing: 0.01em;
-}
+.s-qr-cap { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 14px; transition: color 220ms ease; }
+.s-qr-url { font-size: 16px; font-weight: 700; color: var(--oitax-ink); margin-top: 4px; }
+.oitax-card:hover .s-qr-cap { color: var(--oitax-muted); }
 
-/* ── Simple footer ── */
-.s-footer {
-  background: var(--oitax-header-bg);
-  border-top: 1px solid #4a4a4a;
-  padding: 30px 0;
-}
-.s-footer-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-.s-footer-brand {
-  font-size: 13px;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: 0.02em;
-}
-.s-footer-links {
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-.s-footer-links a {
-  font-size: 13px;
-  color: #888;
-  text-decoration: none;
-  transition: color 180ms ease;
-}
-.s-footer-links a:hover { color: var(--oitax-primary); }
-
-/* ── Divider ── */
-.s-divider {
-  border: none;
-  border-top: 1px solid var(--oitax-border);
-  margin: 0;
-}
-
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 980px) {
-  .s-hero-inner,
-  .s-partner-grid,
-  .s-cta-inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .s-h1     { font-size: 52px; }
-  .s-h1-sub { font-size: 28px; }
-  .s-partner-h2,
-  .s-cta-h2 { font-size: 34px; }
   .s-thesis-grid { grid-template-columns: repeat(2, 1fr); }
-  .s-thesis-card,
-  .s-thesis-card:nth-child(4),
-  .s-thesis-card:nth-child(5) { grid-column: span 1; }
+  .s-thesis-grid .oitax-card,
+  .s-thesis-grid .oitax-card:nth-child(4),
+  .s-thesis-grid .oitax-card:nth-child(5) { grid-column: span 1; }
   .s-actions { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 640px) {
-  .s-hero   { padding: 56px 0 48px; }
-  .s-h1     { font-size: 40px; }
-  .s-h1-sub { font-size: 22px; }
   .s-thesis-grid { grid-template-columns: 1fr; }
-  .s-actions { grid-template-columns: 1fr; gap: 28px; }
-  .s-partner, .s-cta { padding: 70px 0; }
-  .s-speaker-wrap { flex-direction: column; gap: 18px; }
-  .s-qr-wrap { align-items: flex-start; text-align: left; }
+  .s-actions { grid-template-columns: 1fr; }
+  .s-speaker { flex-direction: column; }
 }
 </style>
 </head>
 <body>
 
-<!-- ═══════════ HEADER ═══════════ -->
 <header class="site-header">
   <div class="oitax-container">
     <a href="/" class="oitax-header-brand">
@@ -460,86 +126,96 @@
       </span>
     </a>
     <nav>
-      <a href="https://oi.tax">oi.tax</a>
+      <a href="/en.html">Home</a>
+      <div class="oitax-nav-dropdown">
+        <button class="oitax-nav-dropdown-toggle" type="button">Topics <span class="oitax-nav-caret">▾</span></button>
+        <div class="oitax-nav-dropdown-menu">
+          <a href="/en/permanent-establishments-profit-allocation-tax-audits/">Permanent establishments</a>
+          <a href="/en/transfer-pricing-tax-audits/">Transfer pricing &amp; adjustments</a>
+          <a href="/en/cross-border-tax-adjustments/">Cross-border adjustments</a>
+          <a href="/en/dispute-resolution-germany-switzerland/">Dispute resolution DE/CH</a>
+        </div>
+      </div>
       <a href="#contact">Contact</a>
+      <a href="/en.html">EN</a>
     </nav>
   </div>
 </header>
 
-<!-- ═══════════ HERO ═══════════ -->
-<section class="s-hero" id="top">
+<main>
+
+<section class="oitax-hero" id="top">
   <div class="oitax-container">
-    <div class="s-hero-inner">
+    <div class="oitax-hero-grid">
       <div>
         <div class="s-badge">
           <span class="s-badge-dot"></span>
           TP Summit 2026 &nbsp;·&nbsp; Quantera Global
         </div>
-        <h1 class="s-h1">Switzerland<br>looks simple.</h1>
-        <p class="s-h1-sub">It is — if you know where to look.</p>
-        <p class="s-hero-lead">No codified TP statute. No formal documentation requirement. A withholding tax system that treaty relief does not cure. And an ESTV that has been quietly building dedicated TP units since 2023. Swiss transfer pricing is not complex in theory. It is exposed in practice.</p>
+        <h1 class="oitax-h1">Switzerland<br>looks simple.</h1>
+        <p class="oitax-lead">It is — if you know where to look.</p>
+        <p class="oitax-body" style="margin-top:18px; max-width:52ch;">No codified TP statute. No formal documentation requirement. A withholding tax system that treaty relief does not cure. And an ESTV that has been quietly building dedicated TP units since 2023. Swiss transfer pricing is not complex in theory — it is exposed in practice.</p>
         <div class="oitax-btn-row">
           <a href="#contact" class="oitax-btn oitax-btn-primary">Discuss a case</a>
         </div>
+        <p class="oitax-micro">Focus: Swiss TP exposure, WHT risk and bilateral correction coordination DE↔CH.</p>
       </div>
-      <div class="s-sidebar-card">
-        <div class="s-sidebar-label">From this session</div>
-        <p>Five key exposure points in Swiss TP practice — and the three actions that follow from them.</p>
-        <p>Speaker: Nils Obenhaus LL.M., oi.tax — OBENHAUS International Tax, Hamburg &amp; Zürich.</p>
+      <div>
+        <div class="oitax-card">
+          <div class="oitax-card-title">From this session</div>
+          <p class="oitax-body">Five key exposure points in Swiss TP practice — and the three concrete actions that follow from them.</p>
+          <p class="oitax-body">Speaker: Nils Obenhaus LL.M., oi.tax — OBENHAUS International Tax, Hamburg &amp; Zürich.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ FIVE THESES ═══════════ -->
 <section class="oitax-section" id="theses">
   <div class="oitax-container">
     <h2 class="oitax-h2">Five things you need to know about Swiss TP</h2>
     <div class="s-thesis-grid">
 
-      <div class="s-thesis-card">
-        <div class="s-thesis-num">01</div>
-        <div class="s-thesis-title">No law, full exposure</div>
-        <p class="s-thesis-body">Switzerland has no codified transfer pricing statute. The system runs on administrative practice and case law. The absence of a formal framework does not reduce exposure — it removes the formal protection that a statutory standard provides.</p>
+      <div class="oitax-card">
+        <div class="s-num">01</div>
+        <div class="oitax-card-title">No law, full exposure</div>
+        <p class="oitax-body">Switzerland has no codified transfer pricing statute. The system runs on administrative practice and case law. The absence of a formal framework does not reduce exposure — it removes the formal protection that a statutory standard provides.</p>
       </div>
 
-      <div class="s-thesis-card">
-        <div class="s-thesis-num">02</div>
-        <div class="s-thesis-title">The audit that didn't come is not the audit that won't</div>
-        <p class="s-thesis-body">The ESTV and Canton Zurich have been building dedicated TP units since 2023. Audit selection is increasingly data-driven — CbCR, BEPS compliance tools. Years without an audit are not years of compliance. They are years of accumulated exposure.</p>
+      <div class="oitax-card">
+        <div class="s-num">02</div>
+        <div class="oitax-card-title">The audit that didn't come is not the audit that won't</div>
+        <p class="oitax-body">The ESTV and Canton Zurich have been building dedicated TP units since 2023. Audit selection is increasingly data-driven — CbCR, BEPS compliance tools. Years without an audit are not years of compliance. They are years of accumulated exposure.</p>
       </div>
 
-      <div class="s-thesis-card">
-        <div class="s-thesis-num">03</div>
-        <div class="s-thesis-title">WHT on hidden distributions — Treaty Relief does not apply</div>
-        <p class="s-thesis-body">If a price is assessed as non-arm's length, the difference is reclassified as a hidden distribution. If it was never booked as income, the withholding tax refund claim is structurally extinguished. Treaty relief applies to dividends — not to hidden distributions.</p>
-        <p class="s-thesis-ref">Ref: BVG A-416/2017, A-2677/2023</p>
+      <div class="oitax-card">
+        <div class="s-num">03</div>
+        <div class="oitax-card-title">WHT on hidden distributions — Treaty Relief does not apply</div>
+        <p class="oitax-body">If a price is assessed as non-arm's length, the difference is reclassified as a hidden distribution. If it was never booked as income, the WHT refund claim is structurally extinguished. Treaty relief applies to dividends — not to hidden distributions.</p>
+        <p class="oitax-body" style="font-size:13px; margin-top:10px; opacity:0.7;">Ref: BVG A-416/2017, A-2677/2023</p>
       </div>
 
-      <div class="s-thesis-card">
-        <div class="s-thesis-num">04</div>
-        <div class="s-thesis-title">Cooperation duty exceeds documentation</div>
-        <p class="s-thesis-body">In Switzerland, the taxpayer must construct the factual record. Failure to produce triggers a discretionary assessment. The absence of a formal prior documentation requirement is technically accurate — and entirely irrelevant in an audit.</p>
+      <div class="oitax-card">
+        <div class="s-num">04</div>
+        <div class="oitax-card-title">Cooperation duty exceeds documentation</div>
+        <p class="oitax-body">In Switzerland, the taxpayer must construct the factual record. Failure to produce triggers a discretionary assessment. The absence of a formal prior documentation requirement is technically accurate — and entirely irrelevant in an audit.</p>
       </div>
 
-      <div class="s-thesis-card">
-        <div class="s-thesis-num">05</div>
-        <div class="s-thesis-title">IQR is necessary, not sufficient</div>
-        <p class="s-thesis-body">The ESTV systematically targets routine entities with sub-3% margins, narrows benchmark sets to Swiss comparables, and applies strict annual periodicity. No multi-year averaging. A result within the interquartile range does not guarantee acceptance.</p>
+      <div class="oitax-card">
+        <div class="s-num">05</div>
+        <div class="oitax-card-title">IQR is necessary, not sufficient</div>
+        <p class="oitax-body">The ESTV systematically targets routine entities with sub-3% margins, narrows benchmark sets to Swiss comparables, and applies strict annual periodicity. No multi-year averaging. A result within the interquartile range does not guarantee acceptance.</p>
       </div>
 
     </div>
-    <p class="s-secondary-line">Don't let Switzerland surprise you.</p>
+    <div class="oitax-strongline">Don't let Switzerland surprise you.</div>
   </div>
 </section>
 
-<hr class="s-divider">
-
-<!-- ═══════════ THREE ACTIONS ═══════════ -->
 <section class="oitax-section" id="actions">
   <div class="oitax-container">
     <h2 class="oitax-h2">Three things to do before the next audit</h2>
-    <p class="oitax-lead" style="max-width:56ch;">Concrete steps that follow from the five exposure points above.</p>
+    <p class="oitax-lead" style="max-width:52ch;">Concrete steps that follow from the five exposure points above.</p>
     <div class="s-actions">
 
       <div class="s-action">
@@ -564,30 +240,26 @@
   </div>
 </section>
 
-<hr class="s-divider">
-
-<!-- ═══════════ SPEAKER ═══════════ -->
 <section class="oitax-section" id="speaker">
   <div class="oitax-container">
     <h2 class="oitax-h2">Speaker</h2>
-    <div class="s-speaker-wrap">
-      <div class="s-speaker-avatar">NO</div>
+    <div class="s-speaker">
+      <div class="s-avatar">NO</div>
       <div>
         <div class="s-speaker-name">Nils Obenhaus LL.M.</div>
-        <div class="s-speaker-role">Lawyer &amp; Transfer Pricing Defense<br>Germany – Switzerland</div>
+        <div class="s-speaker-role">Lawyer &amp; Transfer Pricing Defense · Germany – Switzerland</div>
         <div class="s-speaker-org">oi.tax · OBENHAUS International Tax · Hamburg &amp; Zürich</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ PARTNER PROPOSITION ═══════════ -->
-<section class="s-partner" id="partner">
+<section class="oitax-section" id="partner">
   <div class="oitax-container">
-    <div class="s-partner-grid">
+    <h2 class="oitax-h2">You lead the mandate. We execute the Swiss side.</h2>
+    <div class="oitax-two-col">
       <div>
-        <h2 class="s-partner-h2">You lead<br>the mandate.<br>We execute<br>the Swiss side.</h2>
-        <p class="s-partner-sub">If a German or other foreign correction triggers a Swiss consequence — corresponding correction, withholding tax, ESTV coordination — oi.tax handles the operative Swiss side. The mandate stays with you.</p>
+        <p class="oitax-body">If a German or other foreign correction triggers a Swiss consequence — corresponding correction, withholding tax, ESTV coordination — oi.tax handles the operative Swiss side. The mandate stays with you.</p>
         <ul class="s-partner-list">
           <li>Corresponding corrections before the ESTV and cantonal authorities</li>
           <li>WHT refund claims and hidden distribution qualification disputes</li>
@@ -595,38 +267,39 @@
           <li>Coordination with German or other foreign proceedings, without handover risk</li>
         </ul>
       </div>
-      <div class="s-referral-card">
-        <div class="s-referral-label">How referrals work</div>
-        <p>We take Swiss-side instructions from the lead adviser. The client relationship and overall mandate coordination stay where they belong — with you. We report back, not around.</p>
+      <div>
+        <div class="oitax-card">
+          <div class="oitax-card-title">How referrals work</div>
+          <p class="oitax-body">We take Swiss-side instructions from the lead adviser. The client relationship and overall mandate coordination stay where they belong — with you. We report back, not around.</p>
+        </div>
       </div>
     </div>
+    <div class="oitax-strongline">One line.<br>One lead contact.<br>Germany &amp; Switzerland.</div>
   </div>
 </section>
 
-<!-- ═══════════ CTA ═══════════ -->
-<section class="s-cta" id="contact">
+<section class="oitax-section" id="contact">
   <div class="oitax-container">
-    <div class="s-cta-inner">
-      <div>
-        <h2 class="s-cta-h2">Continue<br>the conversation.</h2>
-        <p class="s-cta-body">After the session or when a case comes up — direct line. No intake form, no first-call formalities.</p>
-        <a id="lnk-teams" href="#" class="oitax-btn oitax-btn-primary" target="_blank" rel="noopener">Contact via Microsoft Teams</a>
-        <p class="s-cta-email">or email: <a id="lnk-email" href="#">&#111;&#98;&#101;&#110;&#104;&#97;&#117;&#115;&#64;&#115;&#116;&#101;&#117;&#101;&#114;&#97;&#110;&#119;&#97;&#108;&#116;&#115;&#107;&#97;&#110;&#122;&#108;&#101;&#105;&#46;&#99;&#111;&#109;</a></p>
+    <h2 class="oitax-h2">Contact</h2>
+    <p class="oitax-body" style="max-width:60ch;">After the session or when a case comes up — direct line. No intake form, no first-call formalities.</p>
+    <div class="oitax-contact-grid">
+      <div class="oitax-card">
+        <div class="oitax-card-title">Nils Obenhaus LL.M.</div>
+        <p class="oitax-body">Lawyer &amp; Transfer Pricing Defense DE/CH<br>oi.tax · Hamburg &amp; Zürich</p>
+        <div class="oitax-btn-row" style="margin-top:20px;">
+          <a id="lnk-teams" href="#" class="oitax-btn oitax-btn-secondary" target="_blank" rel="noopener">Contact via Microsoft Teams</a>
+        </div>
       </div>
-      <div class="s-qr-wrap">
+      <div class="oitax-card" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
         <div class="s-qr-box">
-          <!-- QR code placeholder — replace SVG with actual QR for oi.tax/summit before printing -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="136" height="136" aria-label="QR code placeholder for oi.tax/summit">
-            <!-- Finder: top-left -->
+          <!-- Replace SVG with actual QR code for oi.tax/summit before printing -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="122" height="122" aria-label="QR code placeholder for oi.tax/summit">
             <rect x="4"  y="4"  width="32" height="32" fill="none" stroke="#383838" stroke-width="3.5"/>
             <rect x="11" y="11" width="18" height="18" fill="#383838"/>
-            <!-- Finder: top-right -->
             <rect x="72" y="4"  width="32" height="32" fill="none" stroke="#383838" stroke-width="3.5"/>
             <rect x="79" y="11" width="18" height="18" fill="#383838"/>
-            <!-- Finder: bottom-left -->
             <rect x="4"  y="72" width="32" height="32" fill="none" stroke="#383838" stroke-width="3.5"/>
             <rect x="11" y="79" width="18" height="18" fill="#383838"/>
-            <!-- Timing / data pattern -->
             <rect x="44" y="4"  width="6" height="6" fill="#383838"/>
             <rect x="52" y="4"  width="6" height="6" fill="#383838"/>
             <rect x="60" y="4"  width="6" height="6" fill="#383838"/>
@@ -668,38 +341,81 @@
             <rect x="92" y="96" width="6" height="6" fill="#383838"/>
           </svg>
         </div>
-        <div class="s-qr-caption">Scan or visit</div>
+        <div class="s-qr-cap">Scan or visit</div>
         <div class="s-qr-url">oi.tax/summit</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ FOOTER ═══════════ -->
-<footer class="s-footer">
+</main>
+
+<footer class="oitax-site-footer">
   <div class="oitax-container">
-    <div class="s-footer-inner">
-      <div class="s-footer-brand">oi.tax &nbsp;·&nbsp; OBENHAUS International Tax &nbsp;·&nbsp; Hamburg &amp; Zürich</div>
-      <div class="s-footer-links">
-        <a href="/impressum.html">Imprint</a>
-        <a href="/datenschutz.html">Privacy</a>
-        <a href="https://oi.tax">oi.tax</a>
+
+    <div class="oitax-footer-pieces">
+      <div class="oitax-footer-piece oitax-pp-tab-r">
+        <span class="oitax-piece-label">Zurich office</span>
+        <p class="oitax-piece-name">OBENHAUS International Tax GmbH</p>
+        <p class="oitax-piece-addr">Holzgasse 4<br>8001 Zurich<br>Switzerland</p>
+        <p class="oitax-piece-phone"><a href="tel:+41445851185">+41 44 585 11 85</a></p>
+        <p class="oitax-footer-disclaimer">Legal and tax advisory practice. Mandatory disclosures: <a href="/impressum.html">Imprint</a>.</p>
+      </div>      <div class="oitax-footer-piece oitax-pp-notch-l oitax-pp-tab-r">
+        <span class="oitax-piece-label">Hamburg office</span>
+        <p class="oitax-piece-name">Nils Obenhaus LL.M.<br>Lawyer &amp; Tax adviser</p>
+        <p class="oitax-piece-addr">Barcastrasse 8<br>22087 Hamburg<br>Germany</p>
+        <p class="oitax-piece-note">From June 2026: at <a href="https://www.dmp-wpg.de/" target="_blank" rel="noopener">dmp Dürkop Möller und Partner mbB</a>,<br>Am Kaiserkai 62, 20457 Hamburg</p>
+        <p class="oitax-piece-phone"><a href="tel:+494049209343">+49 40 49 20 93 43</a></p>
+      </div>      <div class="oitax-footer-piece oitax-pp-notch-l">
+        <span class="oitax-piece-label">Network</span>
+        <a href="https://www.quanteraglobal.com/" target="_blank" rel="noopener" class="oitax-footer-qg-logo">
+          <img src="/assets/quantera-global-white.png" alt="Quantera Global — Network member">
+        </a>
+        <p>OBENHAUS International Tax is a member of Quantera Global – a top-tier international network of independent firms with a strong focus on transfer pricing &amp; operational modelling, customs, valuations and international taxation.</p>
+        <p style="margin-top:10px;"><a href="https://www.quanteraglobal.com/" target="_blank" rel="noopener">quanteraglobal.com →</a></p>
       </div>
     </div>
+
+    <div class="oitax-footer-sitemap-row">
+      <div class="oitax-footer-piece oitax-footer-piece--slim">
+        <h4>Topics &amp; sitemap</h4>
+        <nav class="oitax-footer-nav">
+          <a href="/en.html">Home</a>
+          <a href="/en.html#was">What we do</a>
+          <a href="/en.html#wie">How we work</a>
+          <a href="/en.html#warum">Why oi.tax</a>
+          <a href="/en.html#wann">Is my case a fit?</a>
+          <a href="/en.html#kontakt">Contact</a>
+        </nav>
+      </div>
+      <div class="oitax-footer-piece oitax-footer-piece--slim">
+        <h4>Focus areas</h4>
+        <nav class="oitax-footer-nav">
+          <a href="/en/permanent-establishments-profit-allocation-tax-audits/">Permanent establishments &amp; profit allocation</a>
+          <a href="/en/transfer-pricing-tax-audits/">Transfer pricing &amp; adjustments</a>
+          <a href="/en/cross-border-tax-adjustments/">Cross-border adjustments</a>
+          <a href="/en/dispute-resolution-germany-switzerland/">Dispute resolution DE–CH</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="oitax-footer-bottom">
+      <div class="oitax-footer-brand">oi.tax <span class="oitax-sep">·</span> OBENHAUS International Tax <span class="oitax-sep">·</span> since 2009</div>
+      <div class="oitax-footer-bottom-links">
+        <a href="/impressum.html">Imprint</a><a href="/datenschutz.html">Privacy</a><a href="/en.html">EN</a><a href="#top">Back to top</a>
+      </div>
+    </div>
+
   </div>
 </footer>
 
+<script src="/assets/nav.js"></script>
 <script>
 (function () {
-  var u = 'obenhaus';
-  var d = 'steueranwaltskanzlei.com';
-  var addr = u + '@' + d;
+  var u = 'obenhaus', d = 'steueranwaltskanzlei.com';
   var tl = document.getElementById('lnk-teams');
-  var el = document.getElementById('lnk-email');
-  if (tl) tl.href = 'https://teams.microsoft.com/l/chat/0/0?users=' + encodeURIComponent(addr);
-  if (el) el.href = 'mailto:' + addr;
+  if (tl) tl.href = 'https://teams.microsoft.com/l/chat/0/0?users=' + encodeURIComponent(u + '@' + d);
 }());
 </script>
-
 </body>
 </html>
