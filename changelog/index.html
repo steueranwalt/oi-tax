@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site Updates — oi.tax</title>
+<meta name="description" content="Release notes and site updates for oi.tax — OBENHAUS International Tax. Changes to content, design and functionality, newest first.">
+<link rel="canonical" href="https://oi.tax/changelog/">
+<link rel="alternate" hreflang="en" href="https://oi.tax/changelog/">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="preload" as="image" href="/assets/logo-white.webp" type="image/webp" fetchpriority="high">
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<!-- Google tag (gtag.js) with Consent Mode v2 -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QP9TCQ7FG9"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', 'G-QP9TCQ7FG9');
+  if (localStorage.getItem('oi_consent') === 'granted') {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+  }
+</script>
+<style>
+/* ── Changelog layout ─────────────────────────────────────── */
+.cl-intro { max-width: 60ch; margin-bottom: 72px; }
+.cl-intro p { font-size: 18px; line-height: 1.7; color: #4a4a4a; margin: 0; }
+
+.cl-month { margin-bottom: 72px; }
+
+.cl-month-heading {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--oitax-muted);
+  margin: 0 0 0;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--oitax-ink);
+}
+
+.cl-entry {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 0 40px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--oitax-border);
+}
+.cl-entry:last-child { border-bottom: none; }
+
+.cl-date {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--oitax-muted);
+  letter-spacing: 0.02em;
+  padding-top: 5px;
+  white-space: nowrap;
+}
+
+.cl-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+  background: var(--oitax-bg);
+  border: 1px solid var(--oitax-border);
+  color: var(--oitax-muted);
+}
+.cl-tag--perf  { background: #fff8e1; border-color: #f0c040; color: #8a6a00; }
+.cl-tag--ux    { background: #e8f5e9; border-color: #81c784; color: #2e7d32; }
+.cl-tag--content { background: #e3f2fd; border-color: #64b5f6; color: #1565c0; }
+.cl-tag--tech  { background: #f3e5f5; border-color: #ce93d8; color: #6a1b9a; }
+.cl-tag--design { background: #fce4ec; border-color: #f48fb1; color: #880e4f; }
+.cl-tag--launch { background: var(--oitax-primary); border-color: var(--oitax-primary); color: #ffffff; }
+
+.cl-body {}
+.cl-headline {
+  margin: 0 0 12px;
+  font-size: 20px;
+  line-height: 1.25;
+  font-weight: 750;
+  letter-spacing: -0.015em;
+  color: var(--oitax-ink);
+}
+.cl-detail {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #4a4a4a;
+  max-width: 68ch;
+}
+
+/* ── Future entry template ───────────────────────────────── */
+.cl-template {
+  margin-top: 80px;
+  padding: 28px 32px;
+  background: var(--oitax-surface);
+  border: 1px dashed var(--oitax-border);
+  border-radius: var(--oitax-radius);
+  max-width: 68ch;
+}
+.cl-template-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--oitax-muted);
+  display: block;
+  margin-bottom: 18px;
+}
+.cl-template code {
+  display: block;
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--oitax-ink);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+@media (max-width: 700px) {
+  .cl-entry {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .cl-date { padding-top: 0; }
+  .cl-tag { margin-top: 0; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="oitax-container">
+    <a href="/en.html" class="oitax-header-brand">
+      <picture><source srcset="/assets/logo-white.webp" type="image/webp" width="192" height="192"><img src="/assets/logo-white.png" alt="oi.tax" class="oitax-logo" width="192" height="192"></picture>
+      <span class="oitax-header-text">
+        <span class="oitax-header-name">OBENHAUS International Tax</span>
+        <span class="oitax-header-claim">Double Taxation Defense</span>
+      </span>
+    </a>
+    <nav>
+      <a href="/en.html">Home</a>
+      <div class="oitax-nav-dropdown">
+        <button class="oitax-nav-dropdown-toggle" type="button">Topics <span class="oitax-nav-caret">▾</span></button>
+        <div class="oitax-nav-dropdown-menu">
+          <a href="/en/permanent-establishments-profit-allocation-tax-audits/">Permanent establishments</a>
+          <a href="/en/transfer-pricing-tax-audits/">Transfer pricing &amp; adjustments</a>
+          <a href="/en/cross-border-tax-adjustments/">Cross-border adjustments</a>
+          <a href="/en/dispute-resolution-germany-switzerland/">Dispute resolution DE/CH</a>
+        </div>
+      </div>
+      <a href="/en.html#kontakt">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="oitax-legal">
+  <div class="oitax-container">
+
+    <h1 class="oitax-legal-h1" style="font-size:48px;line-height:1.1;font-weight:800;letter-spacing:-0.03em;color:var(--oitax-ink);margin:0 0 18px;">Site updates</h1>
+    <div class="cl-intro">
+      <p>Changes to content, design and functionality — newest first. Each entry is one meaningful unit of work; related fixes are grouped rather than listed individually.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════
+         APRIL 2026
+    ════════════════════════════════════════════════════ -->
+    <section class="cl-month" aria-labelledby="month-2026-04">
+      <h2 class="cl-month-heading" id="month-2026-04">April 2026</h2>
+
+      <article class="cl-entry">
+        <div>
+          <time datetime="2026-04-27" class="cl-date">27 Apr 2026</time>
+          <span class="cl-tag cl-tag--perf">Performance</span>
+        </div>
+        <div class="cl-body">
+          <h3 class="cl-headline">Images, preloading and script loading optimised</h3>
+          <p class="cl-detail">The logo was resized from 512 × 512 px to 192 × 192 px and converted from PNG (55 KB) to lossless WebP (9 KB), reducing the largest-contentful-paint asset by 84 % on every page. A <code>preload</code> hint was added to the <code>&lt;head&gt;</code> of every page so the browser begins fetching the logo before body parsing reaches it, and a <code>preconnect</code> hint for Google Tag Manager eliminates the ~200 ms DNS and handshake cost for analytics. The navigation script gained a <code>defer</code> attribute, and an orphaned image file with no references was removed.</p>
+        </div>
+      </article>
+
+      <article class="cl-entry">
+        <div>
+          <time datetime="2026-04-27" class="cl-date">27 Apr 2026</time>
+          <span class="cl-tag cl-tag--ux">UX</span>
+        </div>
+        <div class="cl-body">
+          <h3 class="cl-headline">Eleven UX and accessibility improvements</h3>
+          <p class="cl-detail">Cards no longer lift on hover — the lift effect was a false affordance implying every card was a link. The topics dropdown gained an open/close animation, caret rotation, Escape-key handling, and proper ARIA attributes (<code>aria-expanded</code>, <code>aria-haspopup</code>, <code>aria-hidden</code>). Other changes: <code>:focus-visible</code> outlines across all interactive elements; the header shrinks after 80 px of scroll; the scroll button now returns to the top of the page rather than to the previous section; active-page links are highlighted; language-switch buttons have descriptive <code>title</code> attributes; and all card titles were converted from <code>&lt;div&gt;</code> to semantic <code>&lt;h3&gt;</code> across all pages.</p>
+        </div>
+      </article>
+
+      <article class="cl-entry">
+        <div>
+          <time datetime="2026-04-26" class="cl-date">26 Apr 2026</time>
+          <span class="cl-tag cl-tag--tech">Analytics</span>
+        </div>
+        <div class="cl-body">
+          <h3 class="cl-headline">GA4 with Consent Mode v2 and satisfaction signals</h3>
+          <p class="cl-detail">Google Analytics 4 was installed with Consent Mode v2: all storage permissions default to denied, and consent is updated via <code>localStorage</code> when granted. Satisfaction signals track scroll depth at 25 %, 50 % and 75 %, time on page at 30 s, 60 s and 120 s, internal navigation clicks, and quick-exit behaviour for visitors arriving from search engines.</p>
+        </div>
+      </article>
+
+      <article class="cl-entry">
+        <div>
+          <time datetime="2026-04-26" class="cl-date">26 Apr 2026</time>
+          <span class="cl-tag cl-tag--content">Content</span>
+        </div>
+        <div class="cl-body">
+          <h3 class="cl-headline">New page: Swiss transfer pricing exposure (<a href="/summit/">/summit/</a>)</h3>
+          <p class="cl-detail">A standalone content page was published at <code>/summit/</code> covering five structural exposure points in Swiss transfer pricing: the absence of codified arm's-length rules, audit-cycle risk, withholding tax on hidden distributions, cooperation duties beyond documentation, and the limits of interquartile range compliance. The page also outlines three pre-audit actions and a referral proposition for external advisers handling mandates with a Swiss side.</p>
+        </div>
+      </article>
+
+      <article class="cl-entry">
+        <div>
+          <time datetime="2026-04-25" class="cl-date">25 Apr 2026</time>
+          <span class="cl-tag cl-tag--content">Content</span>
+        </div>
+        <div class="cl-body">
+          <h3 class="cl-headline">Four content corrections on DE and EN homepages</h3>
+          <p class="cl-detail">The positioning statement "Wir verteidigen, wir korrigieren, wir vertreten." / "We defend, we correct, we represent." was added as a visible sentence in the hero section on both homepages. A bullet covering Swiss tax proceedings without a German nexus was added to the "typically a fit" list. "Begleitung des MAP" was corrected to "Führung des MAP" on the German dispute resolution page. Swiss-German orthography was normalised throughout: ß replaced with ss on all German pages.</p>
+        </div>
+      </article>
+
+      <article class="cl-entry">
+        <div>
+          <time datetime="2026-04-24" class="cl-date">24 Apr 2026</time>
+          <span class="cl-tag cl-tag--design">Design</span>
+        </div>
+        <div class="cl-body">
+          <h3 class="cl-headline">Primary red adjusted to <code>#ff230a</code></h3>
+          <p class="cl-detail">The brand red was refined from <code>#ff3600</code> to <code>#ff230a</code> — a slightly cooler tone that reads more cleanly at small sizes and holds sufficient contrast against the dark header background. The change propagates through all card backgrounds, button fills and link colours via a single CSS custom property.</p>
+        </div>
+      </article>
+
+      <article class="cl-entry">
+        <div>
+          <time datetime="2026-04-23" class="cl-date">23 Apr 2026</time>
+          <span class="cl-tag cl-tag--design">Design</span>
+        </div>
+        <div class="cl-body">
+          <h3 class="cl-headline">Mobile navigation and puzzle-piece footer</h3>
+          <p class="cl-detail">A hamburger menu was added for viewports below 760 px, with a three-bar-to-X animation and click-outside dismissal. The footer was rebuilt as a three-panel puzzle layout: connecting tabs and notches visually link the Zurich office, Hamburg office and Quantera Global network tiles into a single unit. Topic pages, the IncaMail contact card and a scroll-to-previous-section button were also added at this point.</p>
+        </div>
+      </article>
+
+      <article class="cl-entry">
+        <div>
+          <time datetime="2026-04-22" class="cl-date">22 Apr 2026</time>
+          <span class="cl-tag cl-tag--design">Redesign</span>
+        </div>
+        <div class="cl-body">
+          <h3 class="cl-headline">2026 redesign: light theme, design system, legal pages</h3>
+          <p class="cl-detail">The site moved from a dark theme to a light <code>#f2f2f2</code> base, with red-filled cards, a sticky dark header and a structured single-page layout for both homepages. A CSS custom-property design system was introduced, and the Quantera Global network tile was added to every footer. The Impressum and Datenschutzerklärung were populated with complete legal content.</p>
+        </div>
+      </article>
+
+      <article class="cl-entry">
+        <div>
+          <time datetime="2026-04-17" class="cl-date">17 Apr 2026</time>
+          <span class="cl-tag cl-tag--ux">UX</span>
+        </div>
+        <div class="cl-body">
+          <h3 class="cl-headline">Dropdown navigation and encrypted contact standardised</h3>
+          <p class="cl-detail">The topics dropdown was rebuilt from a native <code>&lt;details&gt;</code> element to a JS-controlled button toggle, fixing rendering inconsistencies across browsers where the native element ignored custom styling. The IncaMail encrypted-message button was standardised sitewide with a consistent post-submit note explaining file attachment support and message confirmation download.</p>
+        </div>
+      </article>
+
+      <article class="cl-entry">
+        <div>
+          <time datetime="2026-04-15" class="cl-date">15 Apr 2026</time>
+          <span class="cl-tag cl-tag--content">Content</span>
+        </div>
+        <div class="cl-body">
+          <h3 class="cl-headline">English section launched</h3>
+          <p class="cl-detail">The full English-language section went live: homepage (<code>/en.html</code>) and four topic pages covering permanent establishments and profit allocation, transfer pricing and adjustments, cross-border adjustments, and dispute resolution DE–CH. All pages include <code>hreflang</code> annotations linking the German and English counterparts for search engines.</p>
+        </div>
+      </article>
+
+      <article class="cl-entry">
+        <div>
+          <time datetime="2026-04-14" class="cl-date">14 Apr 2026</time>
+          <span class="cl-tag cl-tag--launch">Launch</span>
+        </div>
+        <div class="cl-body">
+          <h3 class="cl-headline">oi.tax launched</h3>
+          <p class="cl-detail">oi.tax launched as a static GitHub Pages site with German homepage, sticky header, CSS design system and custom domain configuration. Initial content covered bilateral correction coordination DE↔CH as the standalone service, with permanent establishment disputes, transfer pricing adjustments and cross-border proceedings as the three main triggers.</p>
+        </div>
+      </article>
+
+    </section><!-- /April 2026 -->
+
+    <!-- ─── Future entry format ─────────────────────────────── -->
+    <aside class="cl-template" aria-label="Template for future entries">
+      <span class="cl-template-label">Template — copy for new entries</span>
+      <code>&lt;article class="cl-entry"&gt;
+  &lt;div&gt;
+    &lt;time datetime="YYYY-MM-DD" class="cl-date"&gt;DD Mon YYYY&lt;/time&gt;
+    &lt;span class="cl-tag cl-tag--[type]"&gt;[Label]&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="cl-body"&gt;
+    &lt;h3 class="cl-headline"&gt;Short headline (10 words max)&lt;/h3&gt;
+    &lt;p class="cl-detail"&gt;
+      Sentence 1: what changed and where.
+      Sentence 2: why it matters or what problem it solves.
+      Sentence 3 (optional): any caveat, limitation or next step.
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+Available tags:
+  cl-tag--perf     Performance
+  cl-tag--ux       UX
+  cl-tag--content  Content
+  cl-tag--tech     Analytics / Tech
+  cl-tag--design   Design
+  cl-tag--launch   Launch</code>
+    </aside>
+
+  </div>
+</section>
+</main>
+
+<footer class="oitax-site-footer">
+  <div class="oitax-container">
+
+    <div class="oitax-footer-pieces">
+      <div class="oitax-footer-piece oitax-pp-tab-r">
+        <span class="oitax-piece-label">Zurich office</span>
+        <p class="oitax-piece-name">OBENHAUS International Tax GmbH</p>
+        <p class="oitax-piece-addr">Holzgasse 4<br>8001 Zurich<br>Switzerland</p>
+        <p class="oitax-piece-phone"><a href="tel:+41445851185" data-lead="phone_ch">+41 44 585 11 85</a></p>
+        <p class="oitax-footer-disclaimer">Legal and tax advisory practice. Mandatory disclosures: <a href="/impressum.html">Imprint</a>.</p>
+      </div>      <div class="oitax-footer-piece oitax-pp-notch-l oitax-pp-tab-r">
+        <span class="oitax-piece-label">Hamburg office</span>
+        <p class="oitax-piece-name">Nils Obenhaus LL.M.<br>Lawyer &amp; Tax adviser</p>
+        <p class="oitax-piece-addr">Barcastrasse 8<br>22087 Hamburg<br>Germany</p>
+        <p class="oitax-piece-note">From June 2026: at <a href="https://www.dmp-wpg.de/" target="_blank" rel="noopener">dmp Dürkop Möller und Partner mbB</a>,<br>Am Kaiserkai 62, 20457 Hamburg</p>
+        <p class="oitax-piece-phone"><a href="tel:+494049209343" data-lead="phone_de">+49 40 49 20 93 43</a></p>
+      </div>      <div class="oitax-footer-piece oitax-pp-notch-l">
+        <span class="oitax-piece-label">Network</span>
+        <a href="https://www.quanteraglobal.com/" target="_blank" rel="noopener" class="oitax-footer-qg-logo">
+          <picture><source srcset="/assets/quantera-global-white.webp" type="image/webp" width="681" height="356"><img src="/assets/quantera-global-white.png" alt="Quantera Global — Network member" width="681" height="356"></picture>
+        </a>
+        <p>OBENHAUS International Tax is a member of Quantera Global – a top-tier international network of independent firms with a strong focus on transfer pricing &amp; operational modelling, customs, valuations and international taxation.</p>
+        <p style="margin-top:10px;"><a href="https://www.quanteraglobal.com/" target="_blank" rel="noopener">quanteraglobal.com →</a></p>
+      </div>
+    </div>
+
+    <div class="oitax-footer-sitemap-row">
+      <div class="oitax-footer-piece oitax-footer-piece--slim">
+        <h4>Topics &amp; sitemap</h4>
+        <nav class="oitax-footer-nav">
+          <a href="/en.html">Home</a>
+          <a href="/en.html#was">What we do</a>
+          <a href="/en.html#wie">How we work</a>
+          <a href="/en.html#warum">Why oi.tax</a>
+          <a href="/en.html#wann">Is my case a fit?</a>
+          <a href="/en.html#kontakt">Contact</a>
+        </nav>
+      </div>
+      <div class="oitax-footer-piece oitax-footer-piece--slim">
+        <h4>Focus areas</h4>
+        <nav class="oitax-footer-nav">
+          <a href="/en/permanent-establishments-profit-allocation-tax-audits/">Permanent establishments &amp; profit allocation</a>
+          <a href="/en/transfer-pricing-tax-audits/">Transfer pricing &amp; adjustments</a>
+          <a href="/en/cross-border-tax-adjustments/">Cross-border adjustments</a>
+          <a href="/en/dispute-resolution-germany-switzerland/">Dispute resolution DE–CH</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="oitax-footer-bottom">
+      <div class="oitax-footer-brand">oi.tax <span class="oitax-sep">·</span> OBENHAUS International Tax <span class="oitax-sep">·</span> since 2009</div>
+      <div class="oitax-footer-bottom-links">
+        <a href="/impressum.html">Imprint</a><a href="/datenschutz.html">Privacy</a><a href="/en.html">Home</a><a href="#top">Back to top</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="/assets/nav.js" defer></script>
+</body>
+</html>
