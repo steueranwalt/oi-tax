@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>GA4 Event Reference — oi.tax</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; color: #1a1a1a; line-height: 1.6; }
+  h1 { font-size: 1.5rem; border-bottom: 2px solid #ff3500; padding-bottom: .5rem; }
+  h2 { font-size: 1.1rem; margin-top: 2rem; color: #ff3500; }
+  table { width: 100%; border-collapse: collapse; margin: .75rem 0 1.5rem; font-size: .875rem; }
+  th { background: #f4f4f4; text-align: left; padding: .5rem .75rem; border: 1px solid #ddd; }
+  td { padding: .5rem .75rem; border: 1px solid #ddd; vertical-align: top; }
+  code { background: #f4f4f4; padding: .15rem .35rem; border-radius: 3px; font-size: .85em; }
+  .tag { display: inline-block; background: #e8f5e9; color: #2e7d32; border-radius: 3px; padding: .1rem .4rem; font-size: .75rem; font-weight: 600; }
+  .tag.warn { background: #fff3e0; color: #e65100; }
+  footer { margin-top: 3rem; font-size: .8rem; color: #888; border-top: 1px solid #eee; padding-top: 1rem; }
+</style>
+</head>
+<body>
+
+<h1>GA4 Event Reference — oi.tax</h1>
+<p>Property: <code>G-QP9TCQ7FG9</code> &nbsp;·&nbsp; Script: <code>/assets/js/main.js</code> &nbsp;·&nbsp; Stand: 2026-04</p>
+
+<h2>generate_lead</h2>
+<p>Feuert bei jedem Klick auf einen Kontakt-Link (<code>data-lead</code>-Attribut). Als Schlüsselereignis in GA4 markiert.</p>
+<table>
+  <tr><th>Parameter</th><th>Typ</th><th>Werte</th><th>Beispiel</th></tr>
+  <tr><td><code>method</code></td><td>string</td><td><code>phone_ch</code> · <code>phone_de</code> · <code>incamail</code></td><td><code>incamail</code></td></tr>
+</table>
+<p><strong>HTML-Markup:</strong></p>
+<pre><code>&lt;a href="https://incamail.com/..." data-lead="incamail"&gt;Nachricht senden&lt;/a&gt;
+&lt;a href="tel:+41445851185" data-lead="phone_ch"&gt;+41 44 585 11 85&lt;/a&gt;</code></pre>
+
+<h2>nav_click</h2>
+<p>Feuert bei Klick auf jeden Link innerhalb eines <code>&lt;nav&gt;</code>-Elements (Header und Footer).</p>
+<table>
+  <tr><th>Parameter</th><th>Typ</th><th>Werte</th><th>Beispiel</th></tr>
+  <tr><td><code>link_text</code></td><td>string</td><td>Linktext (max. 60 Zeichen)</td><td><code>Transfer Pricing</code></td></tr>
+  <tr><td><code>link_destination</code></td><td>string</td><td>href-Wert</td><td><code>/en/transfer-pricing-tax-audits/</code></td></tr>
+  <tr><td><code>nav_location</code></td><td>string</td><td><code>header</code> · <code>footer</code></td><td><code>header</code></td></tr>
+</table>
+<p><span class="tag">GA4 Auswertung</span> Berichte → Engagement → Ereignisse → <code>nav_click</code> → Dimensionen: <code>nav_location</code>, <code>link_destination</code></p>
+
+<h2>scroll_depth</h2>
+<p>Feuert einmalig pro Seitenaufruf wenn der Nutzer 25, 50, 75 oder 100 % der Seite gescrollt hat.</p>
+<table>
+  <tr><th>Parameter</th><th>Typ</th><th>Werte</th><th>Hinweis</th></tr>
+  <tr><td><code>depth</code></td><td>number</td><td><code>25</code> · <code>50</code> · <code>75</code> · <code>100</code></td><td>Jede Marke wird nur einmal pro Session gefeuert</td></tr>
+  <tr><td><code>page</code></td><td>string</td><td>URL-Pfad</td><td><code>/en/transfer-pricing-tax-audits/</code></td></tr>
+</table>
+<p><span class="tag warn">Hinweis</span> 100 % feuert nur wenn der Nutzer tatsächlich bis ans Seitenende scrollt. Bei kurzen Seiten kann es früh eintreten.</p>
+
+<h2>time_on_page</h2>
+<p>Feuert nach 30, 60 und 120 Sekunden ab Seitenload — misst Zeit, nicht aktive Lesezeit.</p>
+<table>
+  <tr><th>Parameter</th><th>Typ</th><th>Werte</th><th>Hinweis</th></tr>
+  <tr><td><code>seconds</code></td><td>number</td><td><code>30</code> · <code>60</code> · <code>120</code></td><td>Zählt auch wenn Tab im Hintergrund</td></tr>
+  <tr><td><code>page</code></td><td>string</td><td>URL-Pfad</td><td></td></tr>
+</table>
+
+<h2>internal_nav</h2>
+<p>Feuert bei Klick auf interne Links im Seiteninhalt (ausgenommen Nav-Elemente und <code>data-lead</code>-Links).</p>
+<table>
+  <tr><th>Parameter</th><th>Typ</th><th>Beispiel</th></tr>
+  <tr><td><code>destination</code></td><td>string</td><td><code>/steuerkorrekturen-internationale-sachverhalte/</code></td></tr>
+</table>
+
+<h2>quick_exit</h2>
+<p>Feuert wenn ein organischer Besucher (Referrer enthält <code>google.</code> oder <code>bing.</code>) innerhalb von 15 Sekunden keine Interaktion (Scroll, Klick, Tastatur) zeigt. Proxy für Pogo-Sticking.</p>
+<table>
+  <tr><th>Parameter</th><th>Typ</th><th>Beispiel</th></tr>
+  <tr><td><code>page</code></td><td>string</td><td><code>/</code></td></tr>
+</table>
+<p><span class="tag warn">Hinweis</span> Feuert nur bei Besuchern mit organischem Referrer, nicht bei Direktzugriff oder bezahltem Traffic.</p>
+
+<h2>Consent-Logik</h2>
+<p>Tracking feuert erst nach Zustimmung im Cookie-Banner. Status wird in <code>localStorage</code> unter dem Key <code>oi_consent</code> gespeichert (<code>granted</code> / <code>denied</code>).</p>
+<table>
+  <tr><th>Funktion</th><th>Auslöser</th><th>Wirkung</th></tr>
+  <tr><td><code>oiGrantConsent()</code></td><td>Button «Akzeptieren» / «Accept»</td><td><code>analytics_storage: granted</code>, Banner ausblenden</td></tr>
+  <tr><td><code>oiDenyConsent()</code></td><td>Button «Ablehnen» / «Decline»</td><td>Status <code>denied</code> speichern, Banner ausblenden</td></tr>
+</table>
+
+<h2>Schlüsselereignisse in GA4 Admin</h2>
+<p>Folgendes Event muss in GA4 Admin als Schlüsselereignis markiert sein damit Conversion-Daten erscheinen:</p>
+<table>
+  <tr><th>Event</th><th>Pfad</th></tr>
+  <tr><td><code>generate_lead</code></td><td>GA4 Admin → Datenanzeige → Ereignisse → generate_lead → Stern anklicken</td></tr>
+</table>
+
+<h2>Alle Seiten mit aktivem Tracking</h2>
+<table>
+  <tr><th>URL</th><th>Sprache</th><th>Script</th></tr>
+  <tr><td><code>/</code></td><td>DE</td><td><span class="tag">main.js</span></td></tr>
+  <tr><td><code>/en/</code></td><td>EN</td><td><span class="tag">main.js</span></td></tr>
+  <tr><td><code>/betriebsstaetten-gewinnabgrenzung-steuerpruefungen/</code></td><td>DE</td><td><span class="tag">main.js</span></td></tr>
+  <tr><td><code>/steuerkorrekturen-internationale-sachverhalte/</code></td><td>DE</td><td><span class="tag">main.js</span></td></tr>
+  <tr><td><code>/streitbeilegung-deutschland-schweiz/</code></td><td>DE</td><td><span class="tag">main.js</span></td></tr>
+  <tr><td><code>/en/cross-border-tax-adjustments/</code></td><td>EN</td><td><span class="tag">main.js</span></td></tr>
+  <tr><td><code>/en/dispute-resolution-germany-switzerland/</code></td><td>EN</td><td><span class="tag">main.js</span></td></tr>
+  <tr><td><code>/en/permanent-establishments-profit-allocation-tax-audits/</code></td><td>EN</td><td><span class="tag">main.js</span></td></tr>
+  <tr><td><code>/en/transfer-pricing-tax-audits/</code></td><td>EN</td><td><span class="tag">main.js</span></td></tr>
+  <tr><td><code>/datenschutz.html</code></td><td>DE</td><td><span class="tag">main.js</span></td></tr>
+  <tr><td><code>/impressum.html</code></td><td>DE</td><td><span class="tag">main.js</span></td></tr>
+  <tr><td><code>/summit/</code></td><td>EN</td><td><span class="tag">main.js</span></td></tr>
+</table>
+
+<footer>oi.tax · GA4 Property G-QP9TCQ7FG9 · <a href="/docs/seo-ga4-setup-guide.html">Setup-Guide</a></footer>
+</body>
+</html>

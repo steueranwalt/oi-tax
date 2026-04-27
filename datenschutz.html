@@ -237,51 +237,6 @@
     <button onclick="oiGrantConsent()" style="background:#ff3500;border:none;color:#fff;padding:0.5rem 1rem;cursor:pointer;font-size:0.875rem;border-radius:4px;font-weight:600;">Akzeptieren</button>
   </div>
 </div>
-<script>
-  /* Lead + consent + satisfaction signals */
-  document.querySelectorAll('a[data-lead]').forEach(function(a) {
-    a.addEventListener('click', function() {
-      gtag('event', 'generate_lead', { method: a.dataset.lead });
-    });
-  });
-  function oiGrantConsent() {
-    localStorage.setItem('oi_consent', 'granted');
-    gtag('consent', 'update', { analytics_storage: 'granted' });
-    document.getElementById('oi-consent').style.display = 'none';
-  }
-  function oiDenyConsent() {
-    localStorage.setItem('oi_consent', 'denied');
-    document.getElementById('oi-consent').style.display = 'none';
-  }
-  if (!localStorage.getItem('oi_consent')) {
-    document.getElementById('oi-consent').style.display = 'flex';
-  }
-  /* Satisfaction signals */
-  (function () {
-    var path = location.pathname;
-    var marks = { 25: false, 50: false, 75: false };
-    window.addEventListener('scroll', function () {
-      var pct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
-      [25, 50, 75].forEach(function (m) {
-        if (!marks[m] && pct >= m) { marks[m] = true; gtag('event', 'scroll_depth', { depth: m, page: path }); }
-      });
-    }, { passive: true });
-    [30, 60, 120].forEach(function (s) {
-      setTimeout(function () { gtag('event', 'time_on_page', { seconds: s, page: path }); }, s * 1000);
-    });
-    document.querySelectorAll('a[href^="/"], a[href^="./"], a[href$=".html"]').forEach(function (a) {
-      if (!a.dataset.lead) {
-        a.addEventListener('click', function () { gtag('event', 'internal_nav', { destination: a.getAttribute('href') }); });
-      }
-    });
-    if (/google\.|bing\./.test(document.referrer)) {
-      var engaged = false;
-      ['scroll', 'click', 'keydown'].forEach(function (ev) {
-        document.addEventListener(ev, function () { engaged = true; }, { once: true, passive: true });
-      });
-      setTimeout(function () { if (!engaged) gtag('event', 'quick_exit', { page: path }); }, 15000);
-    }
-  }());
-</script>
+<script src="/assets/js/main.js"></script>
 </body>
 </html>
