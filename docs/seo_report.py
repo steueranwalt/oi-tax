@@ -78,6 +78,9 @@ def _api_post(url: str, token: str, payload: dict, retries: int = 4) -> dict:
             if resp.status_code in (429, 503) and attempt < retries:
                 time.sleep(2 ** attempt)
                 continue
+            if not resp.ok:
+                print(f"\nHTTP {resp.status_code} bei {url}")
+                print(f"Details: {resp.text[:500]}")
             resp.raise_for_status()
             return resp.json()
         except requests.exceptions.ConnectionError:
@@ -85,6 +88,21 @@ def _api_post(url: str, token: str, payload: dict, retries: int = 4) -> dict:
                 time.sleep(2 ** attempt)
             else:
                 raise
+
+
+def _api_get(url: str, token: str) -> dict:
+    headers = {"Authorization": f"Bearer {token}"}
+    resp = requests.get(url, headers=headers, timeout=30)
+    if not resp.ok:
+        print(f"\nHTTP {resp.status_code} bei {url}")
+        print(f"Details: {resp.text[:500]}")
+    resp.raise_for_status()
+    return resp.json()
+
+
+def list_gsc_sites(token: str) -> list:
+    data = _api_get("https://searchconsole.googleapis.com/webmasters/v3/sites", token)
+    return [s["siteUrl"] for s in data.get("siteEntry", [])]
 
 
 def gsc_query(token: str, site_url: str, payload: dict) -> dict:
@@ -352,6 +370,19 @@ def main():
     print("Hole Daten...", flush=True)
 
     token = get_access_token(args.key)
+
+    print("  GSC verfuegbare Properties...", flush=True)
+    sites = list_gsc_sites(token)
+    if sites:
+        print(f"  Gefunden: {sites}")
+        if args.site not in sites:
+            print(f"\nWARNUNG: '{args.site}' nicht in der Liste.")
+            print("Verwende stattdessen: --site <eine der obigen URLs>")
+            return
+    else:
+        print("  KEINE Properties gefunden — Service Account hat keinen GSC-Zugang.")
+        print("  Bitte seo-analytics-reader@fiorin.iam.gserviceaccount.com in GSC als Nutzer eintragen.")
+        return
 
     print("  GSC Uebersicht...", flush=True)
     gsc_cur = fetch_gsc_overview(token, args.site, cur_start, cur_end)
