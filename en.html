@@ -275,9 +275,13 @@
 </div>
 <script>
   /* Lead + consent + satisfaction signals */
+  var _leadFired = new Set();
   document.querySelectorAll('a[data-lead]').forEach(function(a) {
     a.addEventListener('click', function() {
-      gtag('event', 'generate_lead', { method: a.dataset.lead });
+      if (!_leadFired.has(a.dataset.lead)) {
+        _leadFired.add(a.dataset.lead);
+        gtag('event', 'generate_lead', { method: a.dataset.lead });
+      }
     });
   });
   function oiGrantConsent() {
