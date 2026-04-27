@@ -93,6 +93,16 @@ Trend positiv / neutral / negativ — ein Satz Begründung.
 
 ## Teil 2: GA4-Tracking einrichten
 
+### 2.0 Übersicht — alle Events
+
+| Event | Auslöser | Parameter | Zweck |
+|---|---|---|---|
+| `generate_lead` | Klick IncaMail / Telefon | `method`: incamail / phone_ch / phone_de | Conversion-Messung |
+| `scroll_depth` | Scroll 25 / 50 / 75 % | `depth`, `page` | Inhalt gelesen? |
+| `time_on_page` | 30s / 60s / 120s aktiv | `seconds`, `page` | Echte Beschäftigung |
+| `internal_nav` | Klick auf internen Link | `destination` | Weiterexploration |
+| `quick_exit` | <15s ohne Interaktion (von Google/Bing) | `page` | Pogo-Stick-Proxy |
+
 ### 2.1 Consent Mode v2 — Code-Änderung
 
 Ersetze den bestehenden gtag-Snippet im `<head>` jeder HTML-Seite:
@@ -215,7 +225,81 @@ Direkt vor `</body>` einfügen. Farben an das jeweilige Site-Design anpassen (`#
 
 ---
 
-## Teil 3: GA4 Key Events aktivieren (einmalig, manuell)
+### 2.5 Satisfaction Signals — User-Zufriedenheit messen
+
+Google wertet zunehmend aus, ob Inhalte die Suchabsicht befriedigen. Direkte Rankingfaktoren sind diese Signale nicht — aber Seiten mit starkem Engagement halten Positionen stabiler und erholen sich nach Updates schneller.
+
+**Wichtige Hinweise:**
+- `time_on_page` misst Zeit ab Seitenload, nicht aktive Lesezeit (Tab-Wechsel werden nicht herausgefiltert)
+- `quick_exit` feuert nur bei organischen Besuchern (Referrer enthält google. oder bing.)
+- `internal_nav` erfasst Klicks auf relative Links (`href` beginnt mit `/` oder endet mit `.html`)
+
+Folgenden Script-Block vor `</body>` einfügen (kombiniert mit Consent- und Lead-Tracking):
+
+```html
+<script>
+  /* Lead + consent + satisfaction signals */
+  document.querySelectorAll('a[data-lead]').forEach(function(a) {
+    a.addEventListener('click', function() {
+      gtag('event', 'generate_lead', { method: a.dataset.lead });
+    });
+  });
+  function oiGrantConsent() {
+    localStorage.setItem('oi_consent', 'granted');
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+    document.getElementById('oi-consent').style.display = 'none';
+  }
+  function oiDenyConsent() {
+    localStorage.setItem('oi_consent', 'denied');
+    document.getElementById('oi-consent').style.display = 'none';
+  }
+  if (!localStorage.getItem('oi_consent')) {
+    document.getElementById('oi-consent').style.display = 'flex';
+  }
+  /* Satisfaction signals */
+  (function () {
+    var path = location.pathname;
+
+    // Scroll depth: 25 %, 50 %, 75 %
+    var marks = { 25: false, 50: false, 75: false };
+    window.addEventListener('scroll', function () {
+      var pct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+      [25, 50, 75].forEach(function (m) {
+        if (!marks[m] && pct >= m) { marks[m] = true; gtag('event', 'scroll_depth', { depth: m, page: path }); }
+      });
+    }, { passive: true });
+
+    // Time on page: 30 s, 60 s, 120 s
+    [30, 60, 120].forEach(function (s) {
+      setTimeout(function () { gtag('event', 'time_on_page', { seconds: s, page: path }); }, s * 1000);
+    });
+
+    // Internal navigation
+    document.querySelectorAll('a[href^="/"], a[href^="./"], a[href$=".html"]').forEach(function (a) {
+      if (!a.dataset.lead) {
+        a.addEventListener('click', function () { gtag('event', 'internal_nav', { destination: a.getAttribute('href') }); });
+      }
+    });
+
+    // Quick-exit proxy (pogo-stick): organischer Besucher, keine Interaktion in 15 s
+    if (/google\.|bing\./.test(document.referrer)) {
+      var engaged = false;
+      ['scroll', 'click', 'keydown'].forEach(function (ev) {
+        document.addEventListener(ev, function () { engaged = true; }, { once: true, passive: true });
+      });
+      setTimeout(function () { if (!engaged) gtag('event', 'quick_exit', { page: path }); }, 15000);
+    }
+  }());
+</script>
+```
+
+**Auswertung in GA4:**
+- Berichte → Engagement → Ereignisse → nach Ereignisname filtern
+- Vergleich: Seiten mit hohem `scroll_depth`-75%-Anteil vs. Seiten mit hohem `quick_exit`-Anteil
+- Seiten mit vielen `quick_exit`-Events → Inhalt oder Meta-Description überarbeiten
+- Seiten mit `time_on_page` 120s → Inhalt funktioniert, für interne Verlinkung priorisieren
+
+---
 
 1. analytics.google.com → Property auswählen
 2. Links unten: **Zahnrad-Icon** (Verwaltung)
