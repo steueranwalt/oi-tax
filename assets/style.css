@@ -15,9 +15,11 @@ html, body { margin: 0; padding: 0; background: var(--oitax-bg); color: var(--oi
 a { color: var(--oitax-primary); }
 
 /* Header */
-.site-header { position: sticky; top: 0; z-index: 100; background: var(--oitax-header-bg); border-bottom: 1px solid #4a4a4a; padding: 14px 0; }
+.site-header { position: sticky; top: 0; z-index: 100; background: var(--oitax-header-bg); border-bottom: 1px solid #4a4a4a; padding: 14px 0; transition: padding 220ms ease; }
+.site-header--compact { padding: 6px 0; }
 .site-header .oitax-container { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-.oitax-logo { height: 96px; width: auto; display: block; flex-shrink: 0; }
+.oitax-logo { height: 96px; width: auto; display: block; flex-shrink: 0; transition: height 220ms ease; }
+.site-header--compact .oitax-logo { height: 56px; }
 .oitax-header-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit; }
 .oitax-header-text { display: flex; flex-direction: column; gap: 1px; }
 .oitax-header-name { font-size: 22px; font-weight: 700; color: #ffffff; letter-spacing: 0.01em; line-height: 1.2; }
@@ -26,9 +28,11 @@ a { color: var(--oitax-primary); }
 .site-header nav a, .oitax-nav-dropdown-toggle { color: #f2f2f2; text-decoration: none; font-size: 15px; font-weight: 600; letter-spacing: 0.02em; transition: color 180ms ease; background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; }
 .site-header nav a:hover, .oitax-nav-dropdown-toggle:hover { color: var(--oitax-primary); }
 .oitax-nav-dropdown { position: relative; display: flex; align-items: center; }
-.oitax-nav-caret { font-size: 11px; margin-left: 2px; }
+.oitax-nav-caret { font-size: 11px; margin-left: 2px; display: inline-block; transition: transform 180ms ease; }
+.oitax-nav-dropdown.open .oitax-nav-caret { transform: rotate(180deg); }
 .oitax-nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 10px); left: 0; background: var(--oitax-deep); border-radius: 6px; min-width: 290px; padding: 10px 0; box-shadow: 0 8px 28px rgba(0,0,0,0.35); z-index: 200; }
-.oitax-nav-dropdown.open .oitax-nav-dropdown-menu { display: block; }
+.oitax-nav-dropdown.open .oitax-nav-dropdown-menu { display: block; animation: oitax-drop-in 160ms ease both; }
+@keyframes oitax-drop-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
 .oitax-nav-dropdown-menu a { display: block; padding: 18px 26px; font-size: 14px; font-weight: 500; color: #f2f2f2; text-decoration: none; white-space: nowrap; border-bottom: 1px solid rgba(255,255,255,0.06); }
 .oitax-nav-dropdown-menu a:last-child { border-bottom: none; }
 .oitax-nav-dropdown-menu a:hover { background: rgba(255,255,255,0.07); color: var(--oitax-primary); }
@@ -54,8 +58,10 @@ a { color: var(--oitax-primary); }
 .oitax-list li { margin-bottom: 8px; line-height: 1.5; }
 
 /* Cards */
-.oitax-card, .oitax-panel, .oitax-split-col, .oitax-fit-box { background: var(--oitax-primary); border: 1px solid rgba(56,56,56,0.08); border-radius: var(--oitax-radius); padding: 30px; transition: all 220ms ease; box-shadow: 0 14px 40px rgba(56,56,56,0.10); }
-.oitax-card:hover, .oitax-panel:hover, .oitax-split-col:hover, .oitax-fit-box:hover { background: var(--oitax-surface); transform: translateY(-3px); box-shadow: 0 22px 60px rgba(56,56,56,0.14); }
+.oitax-card, .oitax-panel, .oitax-split-col, .oitax-fit-box { background: var(--oitax-primary); border: 1px solid rgba(56,56,56,0.08); border-radius: var(--oitax-radius); padding: 30px; transition: background-color 220ms ease, box-shadow 220ms ease; box-shadow: 0 14px 40px rgba(56,56,56,0.10); }
+.oitax-card:hover, .oitax-panel:hover, .oitax-split-col:hover, .oitax-fit-box:hover { background: var(--oitax-surface); box-shadow: 0 22px 60px rgba(56,56,56,0.14); }
+a.oitax-card, .oitax-card--link { transition: background-color 220ms ease, box-shadow 220ms ease, transform 220ms ease; }
+a.oitax-card:hover, .oitax-card--link:hover { transform: translateY(-3px); }
 .oitax-card-title { font-size:26px; line-height:1.18; font-weight:800; letter-spacing:-0.02em; color: var(--oitax-ink); margin:0 0 16px; }
 .oitax-card .oitax-body, .oitax-card .oitax-list, .oitax-card li,
 .oitax-panel .oitax-body, .oitax-panel .oitax-list, .oitax-panel li,
@@ -65,6 +71,17 @@ a { color: var(--oitax-primary); }
 .oitax-panel:hover .oitax-body, .oitax-panel:hover .oitax-list, .oitax-panel:hover li,
 .oitax-split-col:hover .oitax-body, .oitax-split-col:hover .oitax-list, .oitax-split-col:hover li,
 .oitax-fit-box:hover .oitax-body, .oitax-fit-box:hover .oitax-list, .oitax-fit-box:hover li { color: var(--oitax-ink); }
+
+/* Active nav state */
+.site-header nav a[aria-current="page"] { color: var(--oitax-primary); }
+.oitax-nav-dropdown-menu a[aria-current="page"] { color: var(--oitax-primary); }
+
+/* Focus styles */
+:focus-visible { outline: 2px solid var(--oitax-primary); outline-offset: 3px; border-radius: 3px; }
+.oitax-btn:focus-visible { outline-offset: 4px; }
+
+/* Phone links */
+.oitax-body a[href^="tel"] { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 
 /* Buttons */
 .oitax-btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 30px; border-radius: 999px; font-weight: 750; font-size: 16px; line-height: 1.2; text-decoration: none; transition: all 220ms ease; border: 2px solid transparent; min-height: 52px; cursor: pointer; }
